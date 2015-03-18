@@ -2,6 +2,7 @@
 layout: default
 ---
 
+
 <div id="main" role="main">
 	<article class="wrap" itemscope itemtype="http://schema.org/Article">
 		{% if page.image.feature %}
@@ -19,6 +20,7 @@ layout: default
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
 				{{ content }}
+				怎么替换模版中的内容？
 				<hr />
 				<footer class="page-footer">
 					{% if page.categories %}{% include page-author.html %}{% endif %}
@@ -47,6 +49,7 @@ layout: default
 		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
       </P>
       <!--评论系统结束-->
+
 
 		</div><!-- /.inner-wrap -->
 		{% if page.ads == true %}<div class="ads">{% include advertising.html %}</div><!-- /.ads -->{% endif %}
