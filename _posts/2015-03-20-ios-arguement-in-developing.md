@@ -1,8 +1,9 @@
 ---
 layout: article
 title: iOS 开发中的争议（一）
-catagory: 技术文章
-author: 唐巧
+catagory: ios
+author: devtang
+
 ---
 
 <style type="text/css">
