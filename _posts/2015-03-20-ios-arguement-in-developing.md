@@ -21,6 +21,8 @@ span.repost {
 </span>
 <hr>
 
+<img src="http://blog.devtang.com/images/controversy.jpg">
+
 打算分享一些有争议的话题，并且表达一下我的看法。这是该系列的第一篇，我想讨论的是：类的成员变量应该如何定义？
 
 在 Objective-C 的语言的早期，类的私有成员变量是只能定义在 .h 的头文件里面的。像如下这样：
