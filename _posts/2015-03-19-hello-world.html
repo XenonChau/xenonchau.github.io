@@ -1,6 +1,23 @@
 ---
-layout: default
+layout: article
+title:  "Welcome to Jekyll!"
 ---
+
+<!--
+This is my FIRST blog.<br>
+Thank you for watching.<br>
+Goodbye!<br>
+
+{% highlight ruby %}
+def print_hi(name)
+  puts "Hello, #{name}!"
+end
+print_hi('World')
+#=> prints 'Hello, World!' to STDOUT.
+{% endhighlight %}
+-->
+
+
 
 
 <div id="main" role="main">
@@ -19,8 +36,12 @@ layout: default
 		</div>
 		<div class="inner-wrap">
 			<div id="content" class="page-content" itemprop="articleBody">
-				{{ content }}
-				怎么替换模版中的内容？
+				This is my FIRST blog.<br>
+				Thank you for watching.<br>
+				Goodbye!<br>
+				{% highlight ruby %}
+				#=> 这个页面是用html生成的.
+				{% endhighlight %}
 				<hr />
 				<footer class="page-footer">
 					{% if page.categories %}{% include page-author.html %}{% endif %}
@@ -31,25 +52,6 @@ layout: default
 					{% if page.comments == true %}{% include comments.html %}{% endif %}
 				</aside>
 			</div><!-- /.content -->
-
-		<!--插入一个评论系统-->
-      <P>
-        <div id="disqus_thread"></div>
-		<script type="text/javascript">
-    	/* * * CONFIGURATION VARIABLES * * */
-    	var disqus_shortname = 'xenonchau';
-    
-    	/* * * DON'T EDIT BELOW THIS LINE * * */
-    	(function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    		})();
-		</script>
-		<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
-      </P>
-      <!--评论系统结束-->
-
 
 		</div><!-- /.inner-wrap -->
 		{% if page.ads == true %}<div class="ads">{% include advertising.html %}</div><!-- /.ads -->{% endif %}
