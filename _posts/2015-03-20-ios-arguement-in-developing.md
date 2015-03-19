@@ -54,13 +54,13 @@ span.repost {
 
 于是，大家对于如何定义私有的成员变量上就产生的分歧。许多人喜欢用匿名的 Category 的方式来定义私有成员变量。但是，我个人更推荐在 @implementation 中直接添加类的私有成员变量。下面我做一些解释。
 
-<h3>历史原因</h3>
+<h5>历史原因</h5>
 
 首先早期的 iOS 程序员一定知道，在 2011 年 ARC 被推出之前，Objective-C 是需要手工地管理引用计数的。而对类的所有私有成员使用 self.property 的形式，就可以使编译器为我们自动生成管理引用计数的代码。在 2012 年前，这个 feature 还需要使用 @synthesize 关键字来启用的。于是，苹果通过在代码规范中推荐和强调使用 self.property 的编程习惯，来让大家避免在内存管理中遇到问题。而在 ARC 时代，这个编程习惯带来的优势不再存在了，因为编译器会自动为我们管理引用计数，我们只需要关心不要造成循环引用问题就行了。
 
 <hr>
 
-<h3>省心省事</h3>
+<h5>省心省事</h5>
 
 刚刚说到，在类中完全使用 _property 的方式来访问私有成员变量，是不会有内存管理上的问题的。但是使用 self.property 的方式来访问私有变量是不是也是一样不会有内存管理上的问题呢？确实也是，但是有一点需要注意：我们最好不要在 init 和 dealloc 中使用 self.property 的方式来访问成员变量，这一点是写在苹果的官方文档里的，我在以前的文章里也介绍过。(见：<a href="http://blog.devtang.com/blog/2011/08/10/do-not-use-accessor-in-init-and-dealloc-method/">《不要在init和dealloc函数中使用accessor》</a>）
 
@@ -68,7 +68,7 @@ span.repost {
 
 <hr>
 
-<h3>关于隐藏</h3>
+<h5>关于隐藏</h5>
 
 大家知道，self.property 其实是调用了类的 [self property] 方法，所以这其实是有一层方法调用的隐藏，很多时候，我们需要延迟初使化一个类成员的时候，就会把这个成员的初使化方法写在这个 [self property] 方法的实现中。
 
@@ -80,7 +80,7 @@ span.repost {
 
 <hr>
 
-<h3>简短的代码更易读</h3>
+<h5>简短的代码更易读</h5>
 
 _property 的写法比 self.property 更短，也更简单。我认为这样写出来的代码更方便阅读。
 
@@ -90,13 +90,13 @@ _property 的写法比 self.property 更短，也更简单。我认为这样写�
 
 <hr>
 
-<h3>KVO 和 KVC</h3>
+<h5>KVO 和 KVC</h5>
 
 是的，如果用 _property 这种写法，就不能使用 KVO 和 KVC 了。但是我得反问一下，在一个类的内部，KVO 自己的私有成员变量算是一个好设计吗？我们讲类要”高内聚，低耦合”，KVO 是为了实现观察者模式，让对象之间相互解耦的。如果把 KVO 用在类的内部，KVO 自己的私有成员，我认为其实这不是一个很好的设计。
 
 <hr>
 
-<h3>Computed Properties</h3>
+<h5>Computed Properties</h5>
 
 在 Swift 中，引入了 Computed Properties 的概念，其实这在 Objective-C 中也有，只是没有专门给它名字。如果一个 property 我们提供了对应的 setter 和 getter，并且没有直接使用其对应的 _property 变量，那么这个 property 就是所谓的 Computed Properties。
 
@@ -104,7 +104,7 @@ _property 的写法比 self.property 更短，也更简单。我认为这样写�
 
 <hr>
 
-<h3>循环引用问题</h3>
+<h5>循环引用问题</h5>
 
 微博上的@王_晓磊在评论中提到：直接用私有变量有个需要特别注意的地方，在 block 里直接写 _property 相当于 self->_property，虽然没写 self，但是暗含了对 self 的retain，容易造成循环引用。要记得用 weakSelf/strongSelf 大法。
 
@@ -112,7 +112,7 @@ _property 的写法比 self.property 更短，也更简单。我认为这样写�
 
 <hr>
 
-<h3>写在最后</h3>
+<h5>写在最后</h5>
 
 其实我上面提到的这些问题都是小问题，影响不大。但是代码风格的统一却是大问题。所以不管你们项目中使用的是 self.property 风格还是 _property 风格，问题都不大，但是如果你们同时使用这两种风格，那么就非常不好了。
 
