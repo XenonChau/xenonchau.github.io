@@ -1,7 +1,7 @@
 # Site wide configuration
 
-title:
-description:
+title: 唤灵者的闲言碎语
+description: 科技改变生活
 logo: # 120x120 px default image used for Twitter summary card
 teaser: # 400x250 px default teaser image used in image archive grid
 locale:
@@ -21,16 +21,16 @@ gems:
 
 
 # Site owner
-owner:
-  name:
-  email:
-  twitter:
+owner: 
+  name: 唤灵者
+  email: me@xenonchau.com
+  twitter: xenonchau
   google:
     ad-client: 
     ad-slot: 
-  bio: 
+  bio: coding
   avatar: bio-photo.jpg # 160x160 px image for author byline
-disqus-shortname:
+disqus-shortname: xenonchau
 
 
 exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
