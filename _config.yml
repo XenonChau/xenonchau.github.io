@@ -1,54 +1,75 @@
-# Site wide configuration
-
+### Site info:
 title: 唤灵者的闲言碎语
-description: 科技改变生活
-logo: # 120x120 px default image used for Twitter summary card
-teaser: # 400x250 px default teaser image used in image archive grid
-locale:
-url:
+tagline: 科技改变世界
+author: Xenon Chau
+email: me@xenonchau.net
+description: "文艺老青年的唠叨" # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
+keywords: "iOS, 软件开发, xenonchau"
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "http://www.xenonchau.com" # the base hostname & protocol for your site
 
-# Jekyll configuration
 
-sass:
-    sass_dir: _sass
-    style: compressed
-permalink: /:categories/:title/
-kramdown:
-  toc_levels: 1..2
+### Personal info and site tools info:
+twitter_username: 
+github_username:  xenonchau
+disqus_shortname: xenonchau
+favicon:     "/images/favicon.ico"
+aboutme: "我是Xenon Chau。这是我的博客。这个信息在_config.yml修改。" # these are shown on aboutme-sidebar.
+aboutme_photo: "https://avatars2.githubusercontent.com/u/11521664?v=3&s=460" # your photo.
+
+
+### Site setting:
+ShowContactInfo: "True" # Personal Info (twitter,github,email) can be seen on aboutme-sidebar, those info only shown where ShowContactInfo == True
+default_column: "two" # blog style: two columns, if default_column != "two", you will see a one column blog.
+default_locale: "cn" # blog sidebar language set, only include: English(en) and Chinese (cn)
+
+locales:
+    en:
+      Aboutme: "About Me"
+      Archives: "Archives"
+      Blogroll: "Blogroll"
+      Categories: "Categories"
+      Copyright_Notice: "Copyright Notice"
+      Recent_Posts: "Recent Posts"
+      Tags: "Tags"
+      Previous: "Older"
+      Next: "Newer"
+      PostedInCategories: "Posted in"
+      Taggedwith: "and tagged"  
+      PostDate: "on "
+    cn:
+      Aboutme: "关于我"
+      Archives: "时光鸡"
+      Blogroll: "良师益友"        
+      Categories: "分类目录"    
+      Copyright_Notice: "版权声明"
+      Recent_Posts: "近期文章"
+      Tags: "标签" 
+      Previous: "前一页"
+      Next: "后一页"
+      PostedInCategories: "目录:"   
+      Taggedwith: "| 标签:"
+      PostDate: "| 发表时间: "
+
+
+### your Blogroll info, only name can shown on the page.
+
+Blogroll:
+    - name: Onery
+      href: http://onery.github.io/
+      title: 老衲法号帅哥的blog
+    - name: whoiamwhere
+      href: http://www.whoiamwhere.com/
+      title: 路痴的blog
+    - name: 唐巧
+      herf: http://blog.devtang.com/
+      title: 唐巧的技术博客
+    - name: 王巍
+      herf: http://www.onevcat.com/
+      title: OneV's Den
+
+
+### Build settings
+markdown: kramdown
 highlighter: pygments
-gems:
-  - jekyll-sitemap
-
-
-# Site owner
-owner: 
-  name: 唤灵者
-  email: me@xenonchau.com
-  twitter: xenonchau
-  google:
-    ad-client: 
-    ad-slot: 
-  bio: coding
-  avatar: bio-photo.jpg # 160x160 px image for author byline
-disqus-shortname: xenonchau
-
-# Authors
-data:
-  authors:
-    devtang:
-      display_name: 唐巧
-      gravatar: 60fd5218fff6927c0ed376cce01c5460
-      email: 
-      web: http://blog.devtang.com/
-      twitter: 
-      github: devtang
-    onevcat:
-      display_name: 王巍
-      gravatar: 76dbcc74021b8039f14c7b583978b56d
-      email: 
-      web: http://www.onevcat.com/
-      twitter: 
-      github: onevcat
-
-
-exclude: ["lib", "config.rb", ".sass-cache", "Capfile", "config", "log", "Rakefile", "Rakefile.rb", "tmp", "*.sublime-project", "*.sublime-workspace", "Gemfile", "Gemfile.lock", "README.md", "LICENSE", "node_modules", "Gruntfile.js", "package.json"]
+paginate: 5

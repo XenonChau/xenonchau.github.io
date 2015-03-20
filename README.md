@@ -1,16 +1,46 @@
-# Skinny Bones Jekyll Starter
+Freshman21
+==========
 
-Just a little something I'm using to jump start a site refresh. I like to think of it as a starter for building your own Jekyll site. I purposely keep the styling minimal and bare to make it easier to add your own flare and markup.
+Freshman21 is a Jekyll blog theme, base on theme [Freshman](http://github.com/yulijia/freshman). 
 
-I'm currently using a variation of it on my personal website [Made Mistakes](http://mademistakes.com) with some modifications. To learn more about how to use the theme and install it check out the [Skinny Bones demo](http://mmistakes.github.io/skinny-bones-jekyll/) (*work in progress*).
+A tribute to WordPress Theme Twenty-Twelve and Twenty-eleven.
 
-![screenshot of Skinny Bones](http://mmistakes.github.io/skinny-bones-jekyll/images/skinny-bones-theme-feature.jpg)
+Enjoy.
 
----
 
-## Notable Features
+![Screen](http://i.imgur.com/oSp7kacl.png)
 
-* Stylesheet built using Sass. *Requires Jekyll 2.x*
-* Data files for easier customization of the site navigation/footer and for supporting multiple authors.
-* Optional Disqus comments, table of contents, social sharing links, and Google AdSense ads.
-* And more.
+### Version
+
+- master branch: the simplest template, original version.
+
+- gh-pages branch: master branch with google analytics js template.
+
+- readmore branch: master branch with article summary.
+
+
+### How to install this theme?
+
+```
+# please make sure you have already installed git tools and ruby tools(gem)
+$ gem install sass
+$ gem install jekyll
+$ git clone https://github.com/yulijia/freshman21.git
+$ mv freshman21/ yourblogname.github.io/
+```
+
+### A Summary of Features
+
+- Provide single column and two columns layout
+- Powerful configure file
+- Comments by Disqus
+- Support LaTeX (by MathJax)
+- Syntax highlighting
+
+
+### Demo
+
+Single column, please see [my own blog](http://yulijia.net/en/)
+
+Two columns, please see the [theme website](http://yulijia.net/freshman21/)
+

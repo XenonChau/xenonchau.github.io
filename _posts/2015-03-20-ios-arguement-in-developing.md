@@ -1,5 +1,5 @@
 ---
-layout: article
+layout: post
 title: iOS 开发中的争议（一）
 catagory: ios
 author: devtang
