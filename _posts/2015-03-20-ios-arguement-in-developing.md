@@ -1,9 +1,11 @@
 ---
 layout: post
 title: iOS 开发中的争议（一）
-catagory: ios
+summary: 唐巧用一系列文章总结了很多iOS开发中的争议。
+category: 技术文章
 author: devtang
-
+tags:
+- iOS
 ---
 
 <style type="text/css">
