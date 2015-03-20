@@ -24,6 +24,20 @@ layout: default
     {{ content }}
   </article>
   <hr />
+  {% if page.author != empty %}
+    {% for friend in site.Blogroll %}
+      {% if friend.name == page.author %}
+        <h4 class="post-title">作者 : <a href="{{ friend.href }}">{{ friend.title }}</a></h4><!--写上“作者：name”。-->
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+  {% if page.author == empty %}
+    <!--为何不走这一条if呢？-->
+    <h4 class="post-title">作者 : <a href="{{ site.baseurl }}">{{ site.author }}</a></h4><!--写上“作者：自己”。-->
+  {% endif %}
+  
+
+  
 </div>
 
 

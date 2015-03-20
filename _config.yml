@@ -1,7 +1,8 @@
 ### Site info:
 title: 唤灵者的闲言碎语
 tagline: 科技改变世界
-author: Xenon Chau
+author: XenonChau
+name: 唤灵者
 email: me@xenonchau.net
 description: "文艺老青年的唠叨" # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
 keywords: "iOS, 软件开发, xenonchau"
@@ -56,17 +57,17 @@ locales:
 
 Blogroll:
     - name: Onery
-      href: http://www.oneryhandsome.com/
-      title: 老衲法号帅哥的blog
+      href: "http://www.oneryhandsome.com/"
+      title: "老衲法号帅哥"
     - name: whoiamwhere
-      href: http://www.whoiamwhere.com/
-      title: 路痴的blog
-    - name: 唐巧
-      herf: http://blog.devtang.com/
-      title: 唐巧的技术博客
-    - name: 王巍
-      herf: http://www.onevcat.com/
-      title: OneV's Den
+      href: "http://www.whoiamwhere.com/"
+      title: "路痴"
+    - name: devtang
+      href: "http://blog.devtang.com/"
+      title: "唐巧"
+    - name: onevcat
+      href: "http://www.onevcat.com/"
+      title: "王巍"
 
 
 ### Build settings

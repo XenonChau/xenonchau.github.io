@@ -18,12 +18,12 @@ tags:
 <hr>
 ####建立项目
 在Github的右上角<code>Add New Repository</code><br>
-![](images/2015-03-20-0000.jpeg)
+![Add New Repository](/images/2015-03-20-0000.jpeg)
 
 项目名称一定要和自己的用户名一致，<br>
 这是Github为方便访问web托管项目约定好的一种格式。<br>
 把图片中的<code>yourname</code>换成你的用户名。<br>
-![](/images/2015-03-20-0001.jpeg)<br>
+![Create Repository](/images/2015-03-20-0001.jpeg)<br>
 如果想要<code>clone</code>你的项目到本地，把图片下方未勾选的<code>Initialize this repository with a README</code>
 然后点击<code>Create Repository</code>。
 
@@ -87,7 +87,7 @@ $ git config --global user.email "email@example.com"
 {% endhighlight %}
 这个时候就可以把刚刚的在Github上创建的项目<code>clone</code>到本地了。<br>
 在你的项目目录下，复制你的clone链接。<br>
-![](/images/2015-03-20-0002.jpeg)
+![clone](/images/2015-03-20-0002.jpeg)
 
 在Terminal中输入：
 {% highlight bash lineno %}
