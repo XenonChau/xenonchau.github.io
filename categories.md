@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Categories
+title: "分类浏览"
 permalink: /categories/
 ---
 
