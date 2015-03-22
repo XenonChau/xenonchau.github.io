@@ -1,15 +1,42 @@
 ---
 layout: post
 title: 使用Jekyll搭建一个博客 (三)
-summary: 排版格式
+summary: 书写博文能用得上的一小部分排版格式
 category: tutorial
 tags:
 - WebSite
+custom_css: |
+  <style>
+  body{line-height:1.8;font-size:14px;}
+  .description{color:#666;font-size:12px;}
+  </style>
 ---
 
 ##附录：排版格式
 
 <hr>
+{% highlight css %}
+<!--YAML头的使用方法-->
+---
+layout: <!--布局模板-->
+title: "<!--标题-->"
+summary: <!--描述-->
+category: <!--分类仓库-->
+tags: <!--标签-->
+- tag0
+- tag1
+- tag3
+custom_css: | <!--自定义样式表-->
+  <style>
+  body{line-height:1.8;font-size:14px;}
+  .description{color:#666;font-size:12px;}
+  </style>
+---
+ <!-- " | "分隔符前面有一个空格，按照规范所有" : "声明后必须有一个空格；
+新起一行的代码块，至少必须有一个缩进符，且缩进符为空格，不能为tab制表符等其他空白。
+由于规范没有要求使用严格的JSON定义方法，所以属性和属性值不强制要求使用引号括起来。-->
+
+{% endhighlight %}
 
 # &#35;一级标题
 
