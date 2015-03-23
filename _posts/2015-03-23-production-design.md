@@ -2,7 +2,11 @@
 layout: post
 title: "就来谈谈产品开发"
 author: xenonchau
-summary: "现学现卖，谈谈关于产品开发中的一些问题。"
+summary: |
+ <h4>"现学现卖，谈谈关于产品开发中的一些问题。"</h4>
+ <p>iOS开发中，code、xib和storyboard哪一个更好？</p>
+ <p>如何开发一款让用户感觉舒服的软件？</p>
+ <p>从零开始开发一个产品都有那些要注意的？</p>
 category: 技术文章
 tags:
 - Production

@@ -1,7 +1,9 @@
 ---
 layout: post
 title: 使用Jekyll搭建一个博客 (三)
-summary: 书写博文能用得上的一小部分排版格式
+summary: |
+ <h3>书写博文能用得上的一小部分排版格式</h3>
+ <p>好的排版才能让读者赏心悦目</p>
 category: tutorial
 tags:
 - WebSite
@@ -27,12 +29,18 @@ tags: <!--标签-->
 - tag1
 - tag3
 custom_css: | <!--自定义样式表-->
-  <style>
-  body{line-height:1.8;font-size:14px;}
-  .description{color:#666;font-size:12px;}
-  </style>
+ <style>
+ body {
+ line-height: 1.8;
+ font-size:1 4px;
+ }
+ .description {
+ color: #666;
+ font-size: 12px;
+ }
+ </style>
 ---
- <!-- " | "分隔符前面有一个空格，按照规范所有" : "声明后必须有一个空格；
+ <!-- 块内容定义要注意" | "分隔符前面有一个空格，按照规范所有" : "声明后必须有一个空格；
 新起一行的代码块，至少必须有一个缩进符，且缩进符为空格，不能为tab制表符等其他空白。
 由于规范没有要求使用严格的JSON定义方法，所以属性和属性值不强制要求使用引号括起来。-->
 

@@ -1,15 +1,17 @@
 ---
 layout: post
 title: 使用Jekyll搭建一个博客 (二)
-summary: 如何发布一篇博文
+summary: |
+ <h3>如何发布一篇博文</h3>
+ <p>首先我们要设置博客的全局变量：<code>_config.yml</code></p>
+ <p>建立[_layout] [_post] [_include]文件夹</p>
+ <p>在[_layout]文件夹中建立"post"模板</p>
+ <p>建立一个用来展示[_post]文件夹中文章的主页<code>index.html</code></p>
 category: tutorial
 tags:
 - WebSite
 ---
 
-{%highlight ruby%}
-#空
-{%endhighlight%}
 
 > 如果要手动写一个博客，我们需要有一点点<code>HTML</code>基础。
 
@@ -293,7 +295,7 @@ tags: HelloWorld # TAG标签
 Hello world! This site is my first English blog. 
 {% endhighlight %}
 
-> # 刷新一下浏览器看看效果吧！
+> ## 刷新一下浏览器看看效果吧！
 
 附录：[《使用Jekyll搭建一个博客 (三) － 排版格式》](/tutorial/2015/03/20/blog-format.html)
 

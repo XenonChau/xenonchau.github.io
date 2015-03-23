@@ -1,7 +1,10 @@
 ---
 layout: post
 title: iOS 开发中的争议（一）
-summary: 分享自：《唐巧的技术博客》(http://blog.devtang.com/)
+summary: |
+ <p>分享自：<a href="http://blog.devtang.com/">《唐巧的技术博客》</a></p>
+ <p><img src="http://blog.devtang.com/images/controversy.jpg"></p>
+ <p>打算分享一些有争议的话题，并且表达一下我的看法。这是该系列的第一篇，我想讨论的是：类的成员变量应该如何定义？</p>
 category: 技术文章
 author: devtang
 tags:
@@ -9,17 +12,17 @@ tags:
 ---
 
 <style type="text/css">
-span.repost {
-			color: green;
-			font-family: sans-serif;
-			font-size: 14px;
-			font-weight: bold;
-			display: inline-block
-}
+ span.repost {
+ 	color: green;
+ 	font-family: sans-serif;
+ 	font-size: 14px;
+ 	font-weight: bold;
+ 	display: inline-block}
 </style>
 
+
 <span class="repost">
-分享自：[《唐巧的技术博客》](http://blog.devtang.com/)
+分享自：[《唐巧的技术博客》](http://blog.devtang.com/)<br>
 原文地址：[http://blog.devtang.com/blog/2015/03/15/ios-dev-controversy-1/](http://blog.devtang.com/blog/2015/03/15/ios-dev-controversy-1/)
 </span>
 <hr>
