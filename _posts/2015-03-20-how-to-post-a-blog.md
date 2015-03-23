@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 使用Jekyll搭建一个博客 (二)
+author: xenonchau 
 summary: |
  <h3>如何发布一篇博文</h3>
  <p>首先我们要设置博客的全局变量：<code>_config.yml</code></p>

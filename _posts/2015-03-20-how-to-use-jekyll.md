@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 使用Jekyll搭建一个博客 (一)
+author: xenonchau
 summary: |
  <h3>如何搭建本地环境</h3>
  <p>注册Github搭建本地环境(Mac OS X)<br>

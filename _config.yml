@@ -3,17 +3,18 @@ title: 唤灵者的闲言碎语
 tagline: 科技改变世界
 author: XenonChau
 name: 唤灵者
-email: me@xenonchau.net
+email: me@xenonchau.com
 description: "文艺老青年的唠叨" # You can edit this line in _config.yml. It will appear in your document head meta and in your feed.xml site description
-keywords: "iOS, 软件开发, cocos2d-x, "
+keywords: "iOS, 软件开发, cocos2d-x, NeuSoft"
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://www.xenonchau.com" # the base hostname & protocol for your site
 
 
 ### Personal info and site tools info:
-twitter_username: XenonChau
+weibo_username: godtea
 github_username:  xenonchau
 disqus_shortname: xenonchau
+douban_username: godtea
 favicon:     "/images/favicon.ico"
 aboutme: "我是唤灵者。iOS前端开发工程师，平时生性懒散，喜欢搞点未知领域的事情，但都浅尝辄止。" # these are shown on aboutme-sidebar.
 aboutme_photo: "https://avatars2.githubusercontent.com/u/11521664?v=3&s=460" # your photo.
@@ -56,24 +57,38 @@ locales:
 ### your Blogroll info, only name can shown on the page.
 
 Blogroll:
-    - name: iostang
-      href: "http://iostang.github.io/"
-      title: "汤勺"
-    - name: Onery
-      href: "http://www.oneryhandsome.com/"
-      title: "应俊"
-    - name: whoiamwhere
-      href: "http://www.whoiamwhere.com/"
-      title: "小豪"
-    - name: devtang
+    - author: devtang
       href: "http://blog.devtang.com/"
-      title: "唐巧"
-    - name: onevcat
+      name: "唐巧"
+      title: "唐巧的技术博客 - 记录下自己学习的点滴"
+    - author: onevcat
       href: "http://www.onevcat.com/"
-      title: "王巍"
-    - name: jiangxingfei
+      name: "王巍"
+      title: "OneV's Den - 上善若水，人淡如菊"
+    - author: lijiayu
+      herf: "http://lijiayu.net/"
+      name: "Lijia Yu"
+      title: "On Your Mark - Never give up, Dream big"
+    - author: cl0sure
+      herf: "http://cl0sure.github.io/"
+      name: "大翰"
+      title: "大翰的Hexo"
+    - author: iostang
+      href: "http://iostang.github.io/"
+      name: "汤勺"
+      title: "唐先森的技术博客"
+    - author: onery
+      href: "http://www.oneryhandsome.com/"
+      name: "应俊"
+      title: "应俊的Jekyll"
+    - author: whoiamwhere
+      href: "http://www.whoiamwhere.com/"
+      name: "小豪"
+      title: "小豪的动感光波"
+    - author: jiangxingfei
       href: "mailto:jiangxingfei@lanou3g.com"
-      title: "老蒋"
+      name: "老蒋"
+      title: "给老蒋发邮件"
 
 
 ### Build settings

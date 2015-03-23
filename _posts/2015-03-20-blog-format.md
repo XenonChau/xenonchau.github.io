@@ -1,6 +1,7 @@
 ---
 layout: post
 title: 使用Jekyll搭建一个博客 (三)
+author: xenonchau
 summary: |
  <h3>书写博文能用得上的一小部分排版格式</h3>
  <p>好的排版才能让读者赏心悦目</p>
