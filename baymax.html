@@ -1,4 +1,4 @@
-<!Doctype HTML>
+<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
@@ -13,31 +13,31 @@ body{ background:#999;}
 .mourse{width:30px; height:3px;  position:absolute; top:42px; left:35px; border-radius:50%;box-shadow: 0px 1px 0px #000;}
 
 
-.body{ width:214px; height:320px; left:50%; transform:translate(-50%,0); position:absolute;border-radius:45% 45% 50% 50%; top:55px; background:#FFF; z-index:99; box-shadow: 6px 0px 6px #CCC inset,-6px 0px 6px #ccc inset;}
-.belly{width:224px; height:264px; border-radius:42% 42% 50% 50%; position:absolute; bottom:0; left:50%; transform:translate(-50%,0); background:#fff;box-shadow: 0px 3px 2px #888888, 0px -6px 6px #ccc inset ;}
-.belly:before{width:20px; height:120px; position:absolute; left:-2px; content:" "; top:50px; border-radius:50% 20% 20% 50%;box-shadow: 4px 0px 6px #ccc inset; transform:rotate(3deg);}
-.belly:after{width:20px; height:120px; position:absolute; right:-2px; content:" "; top:50px; border-radius:20% 50% 50% 20%;box-shadow: -4px 0px 6px #ccc inset; transform:rotate(-3deg);}
+.body{ width:214px; height:320px; left:50%; transform:translate(-50%,0); -webkit-transform:translate(-50%,0); position:absolute;border-radius:45% 45% 50% 50%; top:55px; background:#FFF; z-index:99; box-shadow: 6px 0px 6px #CCC inset,-6px 0px 6px #ccc inset;}
+.belly{width:224px; height:264px; border-radius:42% 42% 50% 50%; position:absolute; bottom:0; left:50%; transform:translate(-50%,0); -webkit-transform:translate(-50%,0); background:#fff;box-shadow: 0px 3px 2px #888888, 0px -6px 6px #ccc inset ;}
+.belly:before{width:20px; height:120px; position:absolute; left:-2px; content:" "; top:50px; border-radius:50% 20% 20% 50%;box-shadow: 4px 0px 6px #ccc inset; transform:rotate(3deg);-webkit-transform:rotate(3deg);}
+.belly:after{width:20px; height:120px; position:absolute; right:-2px; content:" "; top:50px; border-radius:20% 50% 50% 20%;box-shadow: -4px 0px 6px #ccc inset; transform:rotate(-3deg);-webkit-transform:rotate(-3deg);}
 
 
 .leg-l{width:80px; height:145px; position:absolute; left:70px; top:290px; background:#fff;border-radius:40% 30% 10px 45%; box-shadow: -2px 0px 2px #999 inset, 4px 0px 4px #CCC inset, -4px 0px 4px #CCC inset; }
 .leg-r{width:80px; height:145px; position:absolute; right:70px; top:290px; background:#fff;border-radius:30% 40% 45% 10px;box-shadow: 2px 0px 2px #999 inset, 4px 0px 4px #CCC inset, -4px 0px 4px #CCC inset; }
 
-.hand-l{width:78px; height:224px; position:absolute; left:20px; top:75px; background:#fff; border-radius:50%; transform:rotate(16deg); box-shadow:6px 6px 6px #ccc inset; z-index:91;}
-.hl-l{width:50px; height:100px; background:#fff; position:absolute; top:160px; border-radius:50% 50% 40% 40%;transform:rotate(-20deg); left:15px;}
-.hl-l:before{ content:""; width:15px; height:82px;box-shadow: 4px 0px 6px #ccc inset; transform:rotate(-0deg); position:absolute; left:0; top:10px;border-radius:50% 20% 20% 50%;}
-.f-1{width: 14px;height: 30px;background: #fff;position: absolute;bottom: -40px;left: 65px;transform: rotate(-35deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 90;}
-.f-2{width: 14px;height: 40px;background: #fff;position: absolute;bottom: -55px;left: 50px;transform: rotate(-45deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 90;}
-.f-3{width: 14px;height: 40px;background: #fff;position: absolute;bottom: -62px;left: 49px;transform: rotate(-45deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 89;}
+.hand-l{width:78px; height:224px; position:absolute; left:20px; top:75px; background:#fff; border-radius:50%; transform:rotate(16deg);-webkit-transform:rotate(16deg); box-shadow:6px 6px 6px #ccc inset; z-index:91;}
+.hl-l{width:50px; height:100px; background:#fff; position:absolute; top:160px; border-radius:50% 50% 40% 40%;transform:rotate(-20deg);-webkit-transform:rotate(-20deg); left:15px;}
+.hl-l:before{ content:""; width:15px; height:82px;box-shadow: 4px 0px 6px #ccc inset; transform:rotate(-0deg);-transform:rotate(-0deg); position:absolute; left:0; top:10px;border-radius:50% 20% 20% 50%;}
+.f-1{width: 14px;height: 30px;background: #fff;position: absolute;bottom: -40px;left: 65px;transform: rotate(-35deg);-webkit-transform: rotate(-35deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 90;}
+.f-2{width: 14px;height: 40px;background: #fff;position: absolute;bottom: -55px;left: 50px;transform: rotate(-45deg);-transform: rotate(-45deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 90;}
+.f-3{width: 14px;height: 40px;background: #fff;position: absolute;bottom: -62px;left: 49px;transform: rotate(-45deg);-webkit-transform: rotate(-45deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 89;}
 
-.hand-r{width:78px; height:224px; position:absolute; right:20px; top:75px; background:#fff; border-radius:50%; transform:rotate(-16deg); box-shadow:-6px -6px 6px #ccc inset; z-index:91;}
-.hr-r{width:50px; height:100px; background:#fff; position:absolute; top:160px; border-radius:50% 50% 40% 40%;transform:rotate(20deg); right:15px;}
-.hr-r:before{ content:""; width:15px; height:82px;box-shadow: -4px 0px 6px #ccc inset; transform:rotate(-0deg); position:absolute; right:0; top:10px;border-radius:20% 50% 50% 20%;}
-.fr-1{width: 14px;height: 30px;background: #fff;position: absolute;bottom: -40px;right: 65px;transform: rotate(35deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 90;}
-.fr-2{width: 14px;height: 40px;background: #fff;position: absolute;bottom: -55px;right: 50px;transform: rotate(45deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 90;}
-.fr-3{width: 14px;height: 40px;background: #fff;position: absolute;bottom: -62px;right: 49px;transform: rotate(45deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 89;}
+.hand-r{width:78px; height:224px; position:absolute; right:20px; top:75px; background:#fff; border-radius:50%; transform:rotate(-16deg);-webkit-transform:rotate(-16deg); box-shadow:-6px -6px 6px #ccc inset; z-index:91;}
+.hr-r{width:50px; height:100px; background:#fff; position:absolute; top:160px; border-radius:50% 50% 40% 40%;transform:rotate(20deg);-webkit-transform:rotate(20deg); right:15px;}
+.hr-r:before{ content:""; width:15px; height:82px;box-shadow: -4px 0px 6px #ccc inset; transform:rotate(-0deg);-webkit-transform:rotate(-0deg); position:absolute; right:0; top:10px;border-radius:20% 50% 50% 20%;}
+.fr-1{width: 14px;height: 30px;background: #fff;position: absolute;bottom: -40px;right: 65px;transform: rotate(35deg);-webkit-transform: rotate(35deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 90;}
+.fr-2{width: 14px;height: 40px;background: #fff;position: absolute;bottom: -55px;right: 50px;transform: rotate(45deg);-webkit-transform: rotate(45deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 90;}
+.fr-3{width: 14px;height: 40px;background: #fff;position: absolute;bottom: -62px;right: 49px;transform: rotate(45deg);-webkit-transform: rotate(45deg);border-radius: 50% 50% 40%;box-shadow: 0px -2px 2px #ccc inset;z-index: 89;}
 
-.cover-s{width:64px;  height:15px; position:absolute; left:50%; transform:translate(-50%,0); top:19px; z-index:101;}
-.cover-x{width:64px; height:12px; position:absolute; left:50%; transform:translate(-50%,0); bottom:12px; z-index:101; overflow:hidden;}
+.cover-s{width:64px;  height:15px; position:absolute; left:50%; transform:translate(-50%,0);-webkit-transform:translate(-50%,0); top:19px; z-index:101;}
+.cover-x{width:64px; height:12px; position:absolute; left:50%; transform:translate(-50%,0);-webkit-transform:translate(-50%,0); bottom:12px; z-index:101; overflow:hidden;}
 .left{width:17px; height:15px; float:left; background:#fff;}
 .right{width:17px; height:15px; float:right; background:#fff;}
 
@@ -64,11 +64,11 @@ body{ background:#999;}
 
 @-webkit-keyframes myfirst /* Safari 和 Chrome */
 {
-0% {transform:rotate(0deg);}
-25% {transform:rotate(10deg);}
-50%{transform:rotate(0deg);}
-75%{transform:rotate(-10deg);}
-100{transform:rotate(0deg);}
+0% {transform:rotate(0deg);-webkit-transform:rotate(0deg);}
+25% {transform:rotate(6deg);-webkit-transform:rotate(6deg);}
+50%{transform:rotate(0deg);-webkit-transform:rotate(0deg);}
+75%{transform:rotate(-6deg);-webkit-transform:rotate(-6deg);}
+100{transform:rotate(0deg);-webkit-transform:rotate(0deg);}
 }
 
 .head{
@@ -149,13 +149,44 @@ animation: eyeclose2 3s infinite 2s;
 -moz-animation: eyeclose2 3s infinite 2s;	/* Firefox */
 -webkit-animation: eyeclose2 3s infinite 2s;	/* Safari 和 Chrome */
 }
+
+
+/* 这里是我加的，控制链接文字的。 */
+.repost {
+	margin-left: 40px;
+	margin-right: 40px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+	border: 3px solid #000;
+	padding-left: auto;
+	padding-right: auto;
+}
+
+.repost a {
+	color: #5a5a5a;
+	font-family: 'Shift' 'SimHei';
+	font-weight: bold;
+	font-size: 12px;
+}
+.repost p {
+	color: rgb(102, 75, 88);
+	font-size: 12px;
+	font-weight: bold;
+	font-family: 'Shift' 'SimHei';
+	padding: 20px;
+	padding-left: auto;
+	padding-right: auto;
+}
+
 </style>
 </head>
 
 <body>
-<p>
+<div class="repost">
+<p>	
 原文链接：<a href="http://www.w3cfuns.com/blog-5455933-5404334.html">《wocacaca的博客 - 自己写的css3大白机器人》</a>
 </p>
+</div>
 <div class="Baymax">
 	<div class="head">
     	<div class="cover-s"><div class="left"></div><div class="right"></div></div>
@@ -185,4 +216,3 @@ animation: eyeclose2 3s infinite 2s;
 </div>
 </body>
 </html>
-
