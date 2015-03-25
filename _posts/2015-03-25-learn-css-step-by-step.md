@@ -61,7 +61,7 @@ CSS - Cascading Style Sheets：中文译名即“层叠样式表”，它可以�
 
 最后给大家演示一下来自[前端网](http://www.w3cfuns.com/)的一位同学：[wocacaca](http://www.w3cfuns.com/home.php?mod=space&do=blog&uid=5455933&from=space)的作品：[自己写的css3大白机器人~](http://www.w3cfuns.com/blog-5455933-5404334.html)
 
-> [Baymax - Big Hero 6](http://www.xenonchau.com/baymax.html)
+> [Baymax - Big Hero 6](http://www.xenonchau.com/baymax.html)<br />
 > ![baymax](http://www.xenonchau.com/images/2015-03-25-baymax.png)
 
 
