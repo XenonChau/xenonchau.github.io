@@ -1,0 +1,49 @@
+h1,h3,p,a,button {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/*设置页面的主高度*/
+.page1 {
+    height: 750px;
+}
+
+/*设置背景图片要比page高一些*/
+/*相对定位会让图片在page1的下面进行布局*/
+/*设置背景图片的水平和垂直居中位置*/
+.page1-bg {
+    height: 800px;
+    width: 100%;
+    position: absolute;
+    background-position: center center;
+    background-size: cover;
+}
+
+#bg1 {
+    background-image: url("../img/9750.jpg");
+}
+
+.head-h1-text {
+    margin-top: 80px;
+    line-height: 40px;
+}
+
+.title-text {
+    margin-left: 50px;
+}
+
+.head-font-size {
+    font-size: 18pt;
+    color: #ffffff;
+}
+
+#round1 {
+    border-image: url("../img/page1bg.jpg");
+}
+
+
+
+
+
+
+
+
