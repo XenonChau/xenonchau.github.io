@@ -2,6 +2,35 @@ h1,h3,p,a,button {
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
+/*回头添加右侧导航圆点的样式*/
+.side-nav {
+    position: fixed;
+    top: 45%;
+    right: 20px;
+    z-index: 1;
+}
+
+.side-nav ul.nav-side-nav {
+    text-align: center;
+    list-style: none;
+    margin: 0;
+    padding-left: 0;
+}
+
+.side-nav ul.nav-side-nav >li {
+    display: block;
+    line-height: 1.45em;
+    margin: 0;
+    padding: 8px 0;
+}
+
+.side-nav ul.nav-side-nav >li >a {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #e2e2e2;
+}
 
 /*第一页样式*/
 /*设置页面的主高度*/
@@ -84,7 +113,7 @@ h1,h3,p,a,button {
     overflow: hidden;/*超出范围的内容要将他们隐藏*/
 }
 
-.page2-segment a { /*为什么要用>a*/
+.page2-segment >a { /*为什么要用>a*/
     /*>a的意思 这个是一个后代选择器，意味着你父元素下面的所有a元素同时具有你赋予的属性*/
     width: 100%;
     height: 100%;

@@ -24,8 +24,19 @@
 
 <body>
 
+    <div class="side-nav" role="navigation">
+        <ul class="nav-side-nav">
+            <li><a href="#page1" class="tooltip-side-nav"></a></li>
+            <li><a href="#page2" class="tooltip-side-nav"></a></li>
+            <li><a href="#page3" class="tooltip-side-nav"></a></li>
+            <li><a href="#page4" class="tooltip-side-nav"></a></li>
+            <li><a href="#page5" class="tooltip-side-nav"></a></li>
+        </ul>
+    </div>
+
+
     <!--第一页屏幕-->
-    <div class="page1">
+    <div class="page1" id="page1">
         <div class="page1-bg" id="bg1"> <!--通过class引入样式，通过ID来引入图片--></div>
         <div class="container">
             <div class="row"> <!--row样式下面包含的就应该是栅格样式了-->
@@ -50,7 +61,7 @@
 
 
     <!--第二页屏幕-->
-    <div class="page2">
+    <div class="page2" id="page2">
         <!--标题部分-->
         <div class="page2-text">
             <h1 class="page2-text-h1">
@@ -95,7 +106,7 @@
 
 
     <!--第三页-->
-    <div class="page3">
+    <div class="page3" id="page3">
         <div class="page3-bg" id="bg3">
             <div class="container3">
                 <div class="page3-text">
@@ -108,7 +119,7 @@
     </div>
 
     <!--第四页-->
-    <div class="page4">
+    <div class="page4" id="page4">
             <div class="container" style="width: 70%">
                 <div class="page4-title">
                     <h1>产品列表</h1>
@@ -128,8 +139,8 @@
                         <div class="item" style="width: 500px;">
                             <img src="img/page1bg.jpg">
                         </div>
-                        <div class="item" style="width: 500px;">
-                            <img src="img/page1bg.jpg">
+                        <div class="item" style="width: 500px; height: 300px">
+                            <img src="img/gouzao.png">
                         </div>
                     </div>
                     <!--创建左右切换"<" ">"按钮-->
@@ -142,6 +153,21 @@
                 </div>
             </div>
     </div>
+
+
+
+
+    <!--第五页-->
+    <div class="page5" id="page5">
+        <div class="page5-bg" id="bg5">
+            <div class="container">
+                <div class="title-text">
+                    <h1>还在犹豫什么？赶快拿起电话订购吧！</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 </body>
 </html>
