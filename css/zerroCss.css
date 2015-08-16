@@ -79,12 +79,13 @@ h1,h3,p,a,button {
 .page2-segment {
     float: left;
     background-color: #ffffff;
-    padding: 0 2px 2px 0;
+    padding: 0 0px 0px 0;
     position: relative;
     overflow: hidden;/*超出范围的内容要将他们隐藏*/
 }
 
-.page2-segment >a { /*为什么要用>a*/
+.page2-segment a { /*为什么要用>a*/
+    /*>a的意思 这个是一个后代选择器，意味着你父元素下面的所有a元素同时具有你赋予的属性*/
     width: 100%;
     height: 100%;
     float: left;
@@ -228,14 +229,14 @@ h1,h3,p,a,button {
 }
 
 /*.carousel-control.right {*/
-    /*right: 0;*/
-    /*left: auto;*/
-    /*background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);*/
-    /*background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);*/
-    /*background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));*/
-    /*background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);*/
-    /*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);*/
-    /*background-repeat: repeat-x;*/
+/*right: 0;*/
+/*left: auto;*/
+/*background-image: -webkit-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);*/
+/*background-image: -o-linear-gradient(left,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);*/
+/*background-image: -webkit-gradient(linear,left top,right top,from(rgba(0,0,0,.0001)),to(rgba(0,0,0,.5)));*/
+/*background-image: linear-gradient(to right,rgba(0,0,0,.0001) 0,rgba(0,0,0,.5) 100%);*/
+/*filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#80000000', GradientType=1);*/
+/*background-repeat: repeat-x;*/
 /*}*/
 
 /*更改默认的箭头位置，向两边扩散*/
