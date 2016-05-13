@@ -106,6 +106,7 @@ sup {
     @remarks 如有不正确的地方欢迎反馈，如有纰漏也欢迎补充。
     @author 赵振楠
     @date May 13th, 2016
+    @param priority:low 此优先级不影响正常使用流程，但迟早是要改的。
  */
 </code></pre>
 
@@ -159,6 +160,16 @@ sup {
 <td align="center">08</td>
 <td align="left">银行卡号加入Luhn验证，给出提示但不阻止。</td>
 <td align="center">low</td>
+</tr>
+<tr>
+<td align="center">09</td>
+<td align="left">系统设置－分享，二维码链接到长虹首页。</td>
+<td align="center">normal</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="left"><code>http://handi.tstmobile.com/aaa.html</code> <br \>下载入口太难找了。<br \>手机查看页面没适配。</td>
+<td align="center">high</td>
 </tr>
 </tbody>
 </table>
@@ -251,7 +262,7 @@ sup {
 </tr>
 <tr>
 <td align="center">05</td>
-<td align="left">登录成功之后未收回登录页。</td>
+<td align="left">登录成功之后未收回登录页。(iOS处理逻辑同)<br \>登录成功跳转用户之前点击的页面，使操作连贯。<br \>关闭保持app在触发登录判断之前的状态。</td>
 <td align="center">high</td>
 </tr>
 <tr>
@@ -266,12 +277,17 @@ sup {
 </tr>
 <tr>
 <td align="center">08</td>
-<td align="left">添加银行卡获取验证码button不能点击？</td>
+<td align="left">？添加银行卡获取验证码button不能点击</td>
 <td align="center">high</td>
 </tr>
 <tr>
 <td align="center">09</td>
 <td align="left">首页title和apk显示名不一致。下期VI会进行一下统一。</td>
+<td align="center">low</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td align="left">？各大市场没进行分发</td>
 <td align="center">low</td>
 </tr>
 </tbody>
