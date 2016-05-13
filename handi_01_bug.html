@@ -101,16 +101,15 @@ sup {
 <body>
 <h1>憨弟帮一期项目BUG列表</h1>
 
-<h2>platform: 运维</h2>
+<pre><code>/*!
+    @brief 目前为止找到的部分bug。
+    @remarks 如有不正确的地方欢迎反馈，如有纰漏也欢迎补充。
+    @author 赵振楠
+    @date May 13th, 2016
+ */
+</code></pre>
 
-<ol>
-<li>平台名字不统一：憨弟工匠、憨弟帮、憨弟e装。（明天最好一起开个会。）</li>
-<li>银行卡要和银行支付对接。（现在的流程是什么样的？）</li>
-<li>Android &amp; iOS app UI不统一。（下周我开始做原型图。）</li>
-</ol>
-
-
-<h2>platform: 微信</h2>
+<h2>platform: WeChat</h2>
 
 <table>
 <thead>
@@ -158,11 +157,6 @@ sup {
 </tr>
 <tr>
 <td align="center">08</td>
-<td align="left">商家验证提交资料后，控制台里没看到任何条目。</td>
-<td align="center">high</td>
-</tr>
-<tr>
-<td align="center">09</td>
 <td align="left">银行卡号加入Luhn验证，给出提示但不阻止。</td>
 <td align="center">low</td>
 </tr>
@@ -209,7 +203,7 @@ sup {
 <tr>
 <td align="center">06</td>
 <td align="left">快速抢单datasource偶尔会出现重复，复现方式未知。</td>
-<td align="center">low</td>
+<td align="center">normal</td>
 </tr>
 <tr>
 <td align="center">07</td>
@@ -277,8 +271,8 @@ sup {
 </tr>
 <tr>
 <td align="center">09</td>
-<td align="left">首页title和apk显示名不一致。</td>
-<td></td>
+<td align="left">首页title和apk显示名不一致。下期VI会进行一下统一。</td>
+<td align="center">low</td>
 </tr>
 </tbody>
 </table>
@@ -298,6 +292,11 @@ sup {
 <tr>
 <td align="center">01</td>
 <td align="left">iOS端待服务点击完成，微信端收不到。无法完成交易。</td>
+<td align="center">high</td>
+</tr>
+<tr>
+<td align="center">02</td>
+<td align="left">微信商家验证提交资料后，控制台里没看到任何条目。</td>
 <td align="center">high</td>
 </tr>
 </tbody>
