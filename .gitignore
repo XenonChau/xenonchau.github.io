@@ -10,3 +10,5 @@ _site
 .idea/vcs.xml
 
 .idea/workspace.xml
+
+.DS_Store
