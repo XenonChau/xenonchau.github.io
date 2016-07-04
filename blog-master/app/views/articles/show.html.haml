@@ -1,0 +1,62 @@
+.article_show
+  = render partial: 'error'
+  %h3.article-title
+    - if @article.source.empty?
+      [原创]
+    = @article.title
+    - if current_user_is_admin?
+      = link_to edit_article_path(@article) do
+        %span.icon.icon-edit
+      = link_to article_path(@article), method: 'delete', "data-confirm"=> "确定删除吗？" do
+        %span.icon.icon-trash
+
+
+  %p
+    - get_tags(@article).each do |tag|
+      %span.label.label-default
+        = tag
+  %p
+    %span.icon
+      分类：
+      = link_to @article.category.name, articles_path(c: @article.category_id)
+    %span.icon.icon-time(data-toggle="tooltip" data-placement="bottom" title="发表时间")
+      = @article.updated_at.strftime('%Y-%m-%d %H:%M')
+    %span.icon.icon-eye-open(data-toggle="tooltip" data-placement="bottom" title="浏览")
+      = @article.view_count || 1
+    - if current_user_can_star?(@article)
+      = link_to star_article_path(@article), method: :post, remote: 'true' do
+        %span.icon.icon-thumbs-up#article_star(data-toggle="tooltip" data-placement="bottom" title="称赞")
+          = @article.star_count || 0
+    - else
+      %span.icon.icon-thumbs-up(data-toggle="tooltip" data-placement="bottom" title="称赞数")
+        = @article.star_count || 0
+    %span.icon.icon-comments(data-toggle="tooltip" data-placement="bottom" title="评论")
+      = @article.comments_count || 0
+    %span
+      = social_share_button_tag(@article.title)
+  - unless @article.source.empty?
+    %p
+      转载：
+      = @article.source
+
+  .panel.panel-dfault
+    .panel-body#article_content_show
+      -#= raw markdown_parser(@article.content)
+
+  %h3 评论：
+  #comments_content
+    = render partial: 'comments'
+
+  - if is_logined?
+    #comment_form
+      = render partial: 'comment_form'
+  - else
+    .jumbotron
+      %h2
+        = link_to '登录', login_path
+        后可评论
+
+:javascript
+  $(function(){
+    $('#article_content_show').html("#{escape_javascript sanitize(markdown_parser(@article.content))}");
+  });

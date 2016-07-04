@@ -1,0 +1,10 @@
+.text-left
+  %p
+    %h2 博主
+    = @blog ? @blog.name : '未设置'
+  %p
+    %h2 email
+    = @blog ? (link_to @blog.email, "mailto:#{@blog.email}") : '未设置'
+  %p
+    %h2 简介
+    = @blog ? @blog.description : '未设置'

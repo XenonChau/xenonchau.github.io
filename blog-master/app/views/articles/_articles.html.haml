@@ -1,0 +1,7 @@
+- unless @articles.present?
+  .jumbotron
+    %h2 什么也没有～
+- @articles.each do |article|
+  = render partial: 'articles/article', locals: {article: article}
+
+= paginate @articles, remote: true if params[:controller] == 'articles'
