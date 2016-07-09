@@ -1,9 +1,20 @@
 # Dribbble API 文档
+
+* [概述](#概述)
+  * [架构(Schema)](#架构(Schema))
+  * [客户端错误(Client Errors)](#客户端错误(Client Errors))
+  * [客户端错误(Client Errors)](#客户端错误(Client Errors))
+  * [HTTP动作(HTTP Verbs)](#HTTP动作(HTTP Verbs))
+  * [认证(Authentication)](#认证(Authentication))
+  * [页码(Pagination)](页码(Pagination))
+  * [限速(Rate Limiting)](限速(Rate Limiting))
+  * [条件请求(Conditional requests)](条件请求(Conditional requests))
+  * [跨源资源共享(Cross Origin Resource Sharing)](跨源资源共享(Cross Origin Resource Sharing))
+  * [JSON-P回调(JSON-P Callbacks)](JSON-P回调(JSON-P Callbacks))
+
 ## 概述
 
 请注意你必须[注册你的应用](https://dribbble.com/account/applications/new)并且在请求时使用OAuth认证或使用你的API客户端的access token进行认证。在此之前，请务必仔细阅读我们的[条款及指引](http://developer.dribbble.com/terms/)学习如何使用API。
-
-[TOC]
 
 ### 架构(Schema)
 
