@@ -4,7 +4,7 @@
   * [架构(Schema)](#架构schema)
   * [参数(Parameters)](#参数parameters)
   * [客户端错误(Client Errors)](#客户端错误client-errors)
-  * [HTTP动作(HTTP Verbs)](http动作http-verbs)  
+  * [HTTP动作(HTTP Verbs)](#http动作http-verbs)  
   * [认证(Authentication)](#认证authentication)
   * [页码(Pagination)](#页码pagination)
   * [限速(Rate Limiting)](#限速rate-limiting)
