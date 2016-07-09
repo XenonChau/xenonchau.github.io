@@ -1,16 +1,17 @@
 # Dribbble API 文档
 
 * [概述](#概述)
-  * [架构(Schema)](#架构(Schema))
-  * [客户端错误(Client Errors)](#参数Parameters)
-  * [客户端错误(Client Errors)](##客户端错误client-errors)
-  * [HTTP动作(HTTP Verbs)](##http动作http-verbs)
+  * [架构(Schema)](#架构schema)
+  * [参数(Parameters)](#参数parameters)
+  * [客户端错误(Client Errors)](#客户端错误client-errors)
+  * [HTTP动作(HTTP Verbs)](#http动作http-verbs)
+  * [HTTP动作(HTTP Verbs)](#http动作http-verbs)
   * [认证(Authentication)](#认证authentication)
   * [页码(Pagination)](#页码pagination)
   * [限速(Rate Limiting)](#限速rate-limiting)
   * [条件请求(Conditional requests)](#条件请求conditional-requests)
   * [跨源资源共享(Cross Origin Resource Sharing)](#跨源资源共享cross-origin-resource-sharing)
-  * [JSON-P回调(JSON-P Callbacks)](##json-p回调json-p-callbacks)
+  * [JSON-P回调(JSON-P Callbacks)](#json-p回调json-p-callbacks)
 
 ## 概述
 
