@@ -1,0 +1,25 @@
+.article_content
+  %h3
+    - if article.source.empty?
+      [原创]
+    = link_to article.title, article_path(article), target: '_blank'
+  - get_tags(article).each do |tag|
+    %span.label.label-default
+      = tag
+  %p
+    %span.icon.icon-time(data-toggle="tooltip" data-placement="bottom" title="发表时间")
+      = article.updated_at.strftime('%Y-%m-%d')
+    %span.icon.icon-eye-open(data-toggle="tooltip" data-placement="bottom" title="浏览数")
+      = article.view_count || 0
+    %span.icon.icon-thumbs-up(data-toggle="tooltip" data-placement="bottom" title="称赞数")
+      = article.star_count || 0
+    %span.icon.icon-comments(data-toggle="tooltip" data-placement="bottom" title="评论数")
+      = article.comments_count || 0
+  - unless article.source.empty?
+    %p
+      转载：
+      = article.source
+
+  .row-fluid.article_des
+    %p
+      = article.content[0..300]
