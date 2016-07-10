@@ -250,9 +250,9 @@ Access-Control-Allow-Credentials: true
 
 ### JSON-P回调(JSON-P Callbacks)
 
-<font size=2pt>扩展阅读: &nbsp;&nbsp;&nbsp;&nbsp;JSON-P ^[[wikipedia](https://zh.wikipedia.org/zh-cn/JSONP)]</font>
+> ***扩展阅读: JSON-P*** <sup>[[wikipedia](https://zh.wikipedia.org/zh-cn/JSONP)]</sup>
 
-你可以发送一个回调参数给任何GET调用来获得包裹在一个JSON函数的结果。<u>这通常是浏览器避过跨域问题想要在网页中嵌入内容时被使用的</u>^[原文](!# "This is typically used when browsers want to embed content in web pages by getting around cross domain issues.") 。<u>响应包括数据输出相同的常规API，以及HTTP头的相关信息</u> ^[原文](!# "The response includes the same data output as the regular API, plus the relevant HTTP Header information.")。
+你可以发送一个回调参数给任何GET调用来获得包裹在一个JSON函数的结果。这通常是浏览器避过跨域问题想要在网页中嵌入内容时被使用的<sup>[[原文](! "This is typically used when browsers want to embed content in web pages by getting around cross domain issues.")]</sup>。响应包括数据输出相同的常规API，以及HTTP头的相关信息 <sup>[[原文](! "The response includes the same data output as the regular API, plus the relevant HTTP Header information.")]</sup>。
 
 
 ```
@@ -286,7 +286,7 @@ function bar(response) {
 }
 ```
 
-HTTP报头中所有的首部(header)都是字符串类型，只有一个值得注意的例外：链路(Link)。<u>链路报头(Link Header)为你预解析为`[url, options]`元组数组</u> ^[原文](# "Link headers are pre-parsed for you and come through as an array of [url, options] tuples.")。
+HTTP报头中所有的首部(header)都是字符串类型，只有一个值得注意的例外：链路(Link)。链路报头(Link Header)为你预解析为`[url, options]`元组数组 <sup>[[原文](! "Link headers are pre-parsed for you and come through as an array of [url, options] tuples.")]</sup>。
 
 一个看起来像这样的链接：
 
