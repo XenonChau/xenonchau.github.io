@@ -4,21 +4,24 @@
   * [架构(Schema)](#架构schema)
   * [参数(Parameters)](#参数parameters)
   * [客户端错误(Client Errors)](#客户端错误client-errors)
-  * [HTTP动作(HTTP Verbs)](#http动作http-verbs)  
+  * [HTTP动作(HTTP Verbs)](http动作http-verbs)
   * [认证(Authentication)](#认证authentication)
   * [页码(Pagination)](#页码pagination)
-  * [限速(Rate Limiting)](#限速rate-limiting)
+      * [链路报头(Link Header)] (#链路报头link-header)
+  * [限流(Rate Limiting)](#限流rate-limiting)
+      * [保持限流(Staying within the rate limit)] (#保持限流staying-within-the-rate-limit)
   * [条件请求(Conditional requests)](#条件请求conditional-requests)
   * [跨源资源共享(Cross Origin Resource Sharing)](#跨源资源共享cross-origin-resource-sharing)
   * [JSON-P回调(JSON-P Callbacks)](#json-p回调json-p-callbacks)
-
+  
 ## 概述
 
 请注意你必须[注册你的应用](https://dribbble.com/account/applications/new)并且在请求时使用OAuth认证或使用你的API客户端的access token进行认证。在此之前，请务必仔细阅读我们的[条款及指引](http://developer.dribbble.com/terms/)学习如何使用API。
 
+
 ### 架构(Schema)
 
-所有的API访问都是通过HTTPS，从`api.dribbble.com/v1/`端口访问。所有数据都是通过JSON发送和接收的。
+所有的API访问都是通过HTTPS，从`api.dribbble.com/v1/`接口访问。所有数据都是通过JSON发送和接收的。
 
 ```
 $ curl -i https://api.dribbble.com/v1/users/simplebits
@@ -117,28 +120,199 @@ $ curl "https://api.dribbble.com/v1/user?access_token=OAUTH_TOKEN"
 
 ### 页码(Pagination)
 
-Requests that return multiple items will be paginated to 30 items by default. You can specify further pages with the page parameter. For some resources, you can also set a custom page size up to 100 with the per_page parameter. Note that for technical reasons not all endpoints respect the per_page parameter.
+返回多个项目的请求默认将被分为每页30项。您可以使用`page`参数规定更多页面。对于一些资源，你还可以使用`per_page`参数设置高达100的自定义页面容量。请注意，由于技术原因，不是所有的接口都支持`per_page`参数。
 
 ```
 $ curl "https://api.dribbble.com/v1/user/followers?page=2&per_page=100"
 ```
 
-### 限速(Rate Limiting)
+注意，省略`page`参数将返回第一页。
 
-    [展开]
+#### 链路报头(Link Header)
+
+页码信息包含在[链路报头](http://tools.ietf.org/html/rfc5988)中。可能某些其它资源不根据页面数量进行分页，重要的是按照这些Link Header的值来定，而不是自己构建URL。例如，请求第二页时，可以提供以下报头：
+
+```
+Link: <https://api.dribbble.com/v1/user/followers?page=1&per_page=100>; rel="prev",
+  <https://api.dribbble.com/v1/user/followers?page=3&per_page=100>; rel="next"
+```
+`rel` 的值可能是：
+
+|Name	|Description|
+|:-- |:--|
+|next	|显示结果直属的下一个页面的URL。|
+|prev	|显示结果直属的上一个页面的URL。|
+
+### 限流(Rate Limiting)
+
+对于使用OAuth登陆的请求，您可以设置已认证的用户最高每分钟60次，每人每天1,440次。对于使用你应用程序的客户端访问令牌(Client Access Token)那些未经授权的请求，你可以设置最高每分钟60次，每天10,000次。
+
+你可以检查任一API请求返回的HTTP报头来查看当前每分钟限流的状态：
+
+```
+$ curl -i https://api.dribbble.com/v1/users/simplebits
+
+HTTP/1.1 200 OK
+Status: 200 OK
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 59
+X-RateLimit-Reset: 1392321600
+The headers tell you everything you need to know about your current rate limit status:
+```
+
+Header Name	|Description
+---|---
+X-RateLimit-Limit	|The maximum number of requests that the consumer is permitted to make per minute.
+X-RateLimit-Remaining	|The number of requests remaining in the current rate limit window.
+X-RateLimit-Reset	|The time at which the current rate limit window resets in UTC epoch seconds.
+
+如果你需要时间显示为不同的格式，任何现代编程语言可以都完成这项工作。例如，如果您在您的网页浏览器中打开控制台，就可以轻松将时间重置为一个JavaScript Date对象。
+
+```
+new Date(1392321600 * 1000)
+// => Thu Feb 13 2014 14:00:00 GMT-0600 (CST)
+```
+
+一旦你超出限流，你会收到一个错误响应：
+
+```
+HTTP/1.1 429 Too Many Requests
+Status: 429 Too Many Requests
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 0
+X-RateLimit-Reset: 1392321600
+
+{ "message" : "API rate limit exceeded." }
+```
+
+#### 保持限流(Staying within the rate limit)
+
+如果你超出你的限流上限，你可以通过缓存API的响应来解决问题。如果你已经缓存，但仍然超出你的限流上限，请与我们联系，来为您的OAuth应用申请更高的限流上限。
 
 ### 条件请求(Conditional requests)
 
-    [展开]
+大多数响应都返回`ETag`报头。许多响应也会返回一个`Last-Modified`报头。你可以使用这些报头值(Header Value)来让使用了`If-None-Match`和`If-Modified-Since`报头的后续请求去请求这些资源。如果资源没有改变，服务器将返回一个`304 Not Modified`。
+
+```
+$ curl -i https://api.dribbble.com/v1/users/simplebits
+HTTP/1.1 200 OK
+ETag: "e612e16d3c4d113573edb015d8eac1d5"
+Status: 200 OK
+Last-Modified: Sat, 22 Feb 2014 17:10:33 GMT
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 59
+X-RateLimit-Reset: 1392321600
+
+$ curl -i https://api.dribbble.com/v1/users/simplebits -H 'If-None-Match: "e612e16d3c4d113573edb015d8eac1d5"'
+HTTP/1.1 304 Not Modified
+ETag: "e612e16d3c4d113573edb015d8eac1d5"
+Status: 200 OK
+Last-Modified: Sat, 22 Feb 2014 17:10:33 GMT
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 59
+X-RateLimit-Reset: 1392321600
+
+$ curl -i https://api.dribbble.com/v1/users/simplebits -H "If-Modified-Since: Sat, 22 Feb 2014 17:10:33 GMT"
+HTTP/1.1 304 Not Modified
+ETag: "e612e16d3c4d113573edb015d8eac1d5"
+Status: 200 OK
+Last-Modified: Sat, 22 Feb 2014 17:10:33 GMT
+X-RateLimit-Limit: 60
+X-RateLimit-Remaining: 59
+X-RateLimit-Reset: 1392321600
+```
 
 ### 跨源资源共享(Cross Origin Resource Sharing)
 
-    [展开]
+本API对Ajax请求支持跨资源共享(CORS)。你可以阅读 [CORS W3C working draft](http://www.w3.org/TR/cors), 或者HTML5安全指南的 [这个简介](http://code.google.com/p/html5security/wiki/CrossOriginRequestSecurity)。
+
+下面是从浏览器点击`http://example.com`发送请求的示例：
+
+```
+$ curl -i https://api.dribbble.com/v1/users/simplebits -H "Origin: http://example.com"
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://example.com
+Access-Control-Expose-Headers: ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset
+Access-Control-Allow-Credentials: true
+```
+
+CORS的预请求(preflight request)看起来是这样的：
+
+```
+$ curl -i https://api.dribbble.com/v1/users/simplebits -X OPTIONS -H "Origin: http://example.com" -H "Access-Control-Request-Method: GET"
+HTTP/1.1 200 OK
+Access-Control-Allow-Origin: http://example.com
+Access-Control-Allow-Methods: OPTIONS, GET
+Access-Control-Expose-Headers: ETag, Link, X-RateLimit-Limit, X-RateLimit-Remaining, X-RateLimit-Reset
+Access-Control-Max-Age: 86400
+Access-Control-Allow-Credentials: true
+```
 
 ### JSON-P回调(JSON-P Callbacks)
 
 <font size=2pt>扩展阅读: &nbsp;&nbsp;&nbsp;&nbsp;JSON-P^[\[1\]](https://zh.wikipedia.org/zh-cn/JSONP)</font>
-    [展开]
+
+你可以发送一个回调参数给任何GET调用来获得包裹在一个JSON函数的结果。<u>这通常是浏览器避过跨域问题想要在网页中嵌入内容时被使用的</u>^[原文](# "This is typically used when browsers want to embed content in web pages by getting around cross domain issues.") 。<u>响应包括数据输出相同的常规API，以及HTTP头的相关信息</u> ^[原文](# "The response includes the same data output as the regular API, plus the relevant HTTP Header information.")。
 
 
+```
+$ curl "https://api.dribbble.com?callback=bar"
+
+bar({
+  "meta" : {
+    "status" : 200,
+    "X-RateLimit-Limit" : 60,
+    "X-RateLimit-Remaining" : 59,
+    "X-RateLimit-Reset" : 1392321600,
+    "Link" : [
+      ["https://api.dribbble.com?page=2", { "rel" : "next" }]
+    ]
+  },
+  "data" : {
+    // ...
+  }
+})
+```
+
+你可以写一个JavaScript处理程序来处理这样的回调：
+
+```
+function bar(response) {
+  var meta = response.meta
+  var data = response.data
+
+  console.log(meta)
+  console.log(data)
+}
+```
+
+HTTP报头中所有的首部(header)都是字符串类型，只有一个值得注意的例外：链路(Link)。<u>链路报头(Link Header)为你预解析为`[url, options]`元组数组</u> ^[原文](# "Link headers are pre-parsed for you and come through as an array of [url, options] tuples.")。
+
+一个看起来像这样的链接：
+
+```
+Link: <url1>; rel="next", <url2>; rel="foo"; bar="baz"
+```
+
+… 它的回调输出看起来是这样的：
+
+```
+{
+  "Link" : [
+    [
+      "url1",
+      {
+        "rel" : "next"
+      }
+    ],
+    [
+      "url2",
+      {
+        "rel" : "foo",
+        "bar" : "baz"
+      }
+    ]
+  ]
+}
+```
 
