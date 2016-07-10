@@ -1,6 +1,6 @@
 # Dribbble API 文档
 
-* [概述](#概述)
+* [概述(Overview)](#概述overview)
   * [架构(Schema)](#架构schema)
   * [参数(Parameters)](#参数parameters)
   * [客户端错误(Client Errors)](#客户端错误client-errors)
@@ -14,7 +14,11 @@
   * [跨源资源共享(Cross Origin Resource Sharing)](#跨源资源共享cross-origin-resource-sharing)
   * [JSON-P回调(JSON-P Callbacks)](#json-p回调json-p-callbacks)
   
-## 概述
+* [媒体类型(Media Types)](#媒体类型media-types)
+  * [评论正文属性(Comment Body Property)](评论正文属性comment-body-property)
+  * [Shot描述属性(Shot Description Property)](Shot描述属性shot-description-property)
+  
+## 概述(Overview)
 
 请注意你必须[注册你的应用](https://dribbble.com/account/applications/new)并且在请求时使用OAuth认证或使用你的API客户端的access token进行认证。在此之前，请务必仔细阅读我们的[条款及指引](http://developer.dribbble.com/terms/)学习如何使用API。
 
@@ -250,9 +254,9 @@ Access-Control-Allow-Credentials: true
 
 ### JSON-P回调(JSON-P Callbacks)
 
-> ***扩展阅读: JSON-P*** <sup>[[wikipedia](https://zh.wikipedia.org/zh-cn/JSONP)]</sup>
+<font size=2pt>扩展阅读: &nbsp;&nbsp;&nbsp;&nbsp;JSON-P^[\[1\]](https://zh.wikipedia.org/zh-cn/JSONP)</font>
 
-你可以发送一个回调参数给任何GET调用来获得包裹在一个JSON函数的结果。这通常是浏览器避过跨域问题想要在网页中嵌入内容时被使用的<sup>[[原文](! "This is typically used when browsers want to embed content in web pages by getting around cross domain issues.")]</sup>。响应包括数据输出相同的常规API，以及HTTP头的相关信息 <sup>[[原文](! "The response includes the same data output as the regular API, plus the relevant HTTP Header information.")]</sup>。
+你可以发送一个回调参数给任何GET调用来获得包裹在一个JSON函数的结果。<u>这通常是浏览器避过跨域问题想要在网页中嵌入内容时被使用的</u>^[原文](# "This is typically used when browsers want to embed content in web pages by getting around cross domain issues.") 。<u>响应包括数据输出相同的常规API，以及HTTP头的相关信息</u> ^[原文](# "The response includes the same data output as the regular API, plus the relevant HTTP Header information.")。
 
 
 ```
@@ -286,7 +290,7 @@ function bar(response) {
 }
 ```
 
-HTTP报头中所有的首部(header)都是字符串类型，只有一个值得注意的例外：链路(Link)。链路报头(Link Header)为你预解析为`[url, options]`元组数组 <sup>[[原文](! "Link headers are pre-parsed for you and come through as an array of [url, options] tuples.")]</sup>。
+HTTP报头中所有的首部(header)都是字符串类型，只有一个值得注意的例外：链路(Link)。<u>链路报头(Link Header)为你预解析为`[url, options]`元组数组</u> ^[原文](# "Link headers are pre-parsed for you and come through as an array of [url, options] tuples.")。
 
 一个看起来像这样的链接：
 
@@ -314,5 +318,62 @@ Link: <url1>; rel="next", <url2>; rel="foo"; bar="baz"
     ]
   ]
 }
+```
+
+-----------
+
+##媒体类型(Media Types)
+
+* [概述(Overview)](#概述overview)
+* [媒体类型(Media Types)](#媒体类型media-types)
+  * [评论正文属性(Comment Body Property)](#评论正文属性comment-body-property)
+  * [Shot描述属性(Shot Description Property)](#Shot描述属性shot-description-property)
+
+自定义媒体类型用来让消费者在API中选择他们希望收到的数据格式。当你发起请求，这是根据向`Accept`报头添加下列任一类型来完成的。资源对媒体类型处理得很特别，能够独立地改变和支持他们的格式，对其他的资源则不这样。
+
+当前版本支持且只支持`v1`，但未来可能会改变。所有Dribbble的媒体类型看起来是这样的：
+
+```
+application/vnd.dribbble.v1.param+json
+```
+
+### 评论正文属性(Comment Body Property)
+
+The body of a comment can be written with some HTML, such as links, and may include auto-linked URLs and username mentions.
+
+**HTML**
+
+Returns HTML rendered from the body, which includes auto-linking URLs and username mentions. Response will include a body attribute. This is the default if you do not pass any specific media type.
+
+```
+application/vnd.dribbble.v1.html+json
+```
+
+**Text**
+
+Returns a mostly text representation of the body, which is what we display in a textarea when a user is editing a comment. It may contain some HTML if the user provided any, but no auto-linking or mention links will be included. Response will include a body_text attribute.
+
+```
+application/vnd.dribbble.v1.text+json
+```
+
+### Shot描述属性(Shot Description Property)
+
+The description of a shot can be written with some HTML, such as links, and may include auto-linked URLs and username mentions. The property is identical to a comment body property, apart from the property name.
+
+**HTML**
+
+Returns HTML rendered from the body, which includes auto-linking URLs and username mentions. Response will include a description attribute. This is the default if you do not pass any specific media type.
+
+```
+application/vnd.dribbble.v1.html+json
+```
+
+**Text**
+
+Returns a mostly text representation of the description, which is what we display in a textarea when a user is editing a description. It may contain some HTML if the user provided any, but no auto-linking or mention links will be included. Response will include a description_text attribute.
+
+```
+application/vnd.dribbble.v1.text+json
 ```
 
