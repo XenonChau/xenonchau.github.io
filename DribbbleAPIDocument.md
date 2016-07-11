@@ -15,8 +15,8 @@
   * [JSON-P回调(JSON-P Callbacks)](#json-p回调json-p-callbacks)
   
 * [媒体类型(Media Types)](#媒体类型media-types)
-  * [评论正文属性(Comment Body Property)](评论正文属性comment-body-property)
-  * [Shot描述属性(Shot Description Property)](Shot描述属性shot-description-property)
+  * [评论正文属性(Comment Body Property)](#评论正文属性comment-body-property)
+  * [快照描述属性(Shot Description Property)](#快照描述属性shot-description-property)
   
 ## 概述(Overview)
 
@@ -254,9 +254,9 @@ Access-Control-Allow-Credentials: true
 
 ### JSON-P回调(JSON-P Callbacks)
 
-<font size=2pt>扩展阅读: &nbsp;&nbsp;&nbsp;&nbsp;JSON-P^[\[1\]](https://zh.wikipedia.org/zh-cn/JSONP)</font>
+扩展阅读: JSON-P<sup>[wikipedia](https://zh.wikipedia.org/zh-cn/JSONP)</sup>
 
-你可以发送一个回调参数给任何GET调用来获得包裹在一个JSON函数的结果。<u>这通常是浏览器避过跨域问题想要在网页中嵌入内容时被使用的</u>^[原文](# "This is typically used when browsers want to embed content in web pages by getting around cross domain issues.") 。<u>响应包括数据输出相同的常规API，以及HTTP头的相关信息</u> ^[原文](# "The response includes the same data output as the regular API, plus the relevant HTTP Header information.")。
+你可以发送一个回调参数给任何GET调用来获得包裹在一个JSON函数的结果。这通常是浏览器避过跨域问题想要在网页中嵌入内容时被使用的。响应包括和常规API相同的数据输出，外加HTTP头的相关信息。
 
 
 ```
@@ -290,7 +290,7 @@ function bar(response) {
 }
 ```
 
-HTTP报头中所有的首部(header)都是字符串类型，只有一个值得注意的例外：链路(Link)。<u>链路报头(Link Header)为你预解析为`[url, options]`元组数组</u> ^[原文](# "Link headers are pre-parsed for you and come through as an array of [url, options] tuples.")。
+HTTP报头中所有的头(header)都是字符串类型，只有一个值得注意的例外：链路(Link)。链路报头(Link Header)为你预解析为`[url, options]`元组数组。
 
 一个看起来像这样的链接：
 
@@ -339,11 +339,11 @@ application/vnd.dribbble.v1.param+json
 
 ### 评论正文属性(Comment Body Property)
 
-The body of a comment can be written with some HTML, such as links, and may include auto-linked URLs and username mentions.
+评论正文可使用HTML编写，例如链接，并可以包含自动链接(auto-linked)的URL和用户名提及(username mentions)。
 
 **HTML**
 
-Returns HTML rendered from the body, which includes auto-linking URLs and username mentions. Response will include a body attribute. This is the default if you do not pass any specific media type.
+返回HTML从包含了自动链接(auto-linked)的URL和用户名提及(username mentions)的正文呈现。回应将包含一个`body`属性。如果你没传过任何特定的媒体类型，这就是默认值。
 
 ```
 application/vnd.dribbble.v1.html+json
@@ -351,19 +351,21 @@ application/vnd.dribbble.v1.html+json
 
 **Text**
 
-Returns a mostly text representation of the body, which is what we display in a textarea when a user is editing a comment. It may contain some HTML if the user provided any, but no auto-linking or mention links will be included. Response will include a body_text attribute.
+当用户正在编辑评论时，返回一个显示在文本区域、大多是文本形式的正文。它就可能包含一些用户自己写的HTML代码，但自动链接(auto-linked)或提及(mentions)链接将被不包括在内。响应将包括一个`body_text`属性。
 
 ```
 application/vnd.dribbble.v1.text+json
 ```
 
-### Shot描述属性(Shot Description Property)
+### 快照描述属性(Shot Description Property)
 
-The description of a shot can be written with some HTML, such as links, and may include auto-linked URLs and username mentions. The property is identical to a comment body property, apart from the property name.
+> 我不知道怎么翻译`Shot`，可能是“快照”。
+
+快照描述可使用HTML编写，比如链接，并可以包括自动链接(auto-linked)的URL和用户名提及(username mentions)。该属性和评论正文属性除了名称其它都是一样的。
 
 **HTML**
 
-Returns HTML rendered from the body, which includes auto-linking URLs and username mentions. Response will include a description attribute. This is the default if you do not pass any specific media type.
+返回HTML从包含了自动链接(auto-linked)的URL和用户名提及(username mentions)的描述呈现。回应将包含一个`description`属性。如果你没传过任何特定的媒体类型，这就是默认值。
 
 ```
 application/vnd.dribbble.v1.html+json
@@ -371,7 +373,7 @@ application/vnd.dribbble.v1.html+json
 
 **Text**
 
-Returns a mostly text representation of the description, which is what we display in a textarea when a user is editing a description. It may contain some HTML if the user provided any, but no auto-linking or mention links will be included. Response will include a description_text attribute.
+当用户正在编辑描述时，返回一个显示在文本区域、大多是文本形式的描述。它就可能包含一些用户自己写的HTML代码，但自动链接(auto-linked)或提及(mentions)链接将被不包括在内。响应将包括一个`description_text`属性。
 
 ```
 application/vnd.dribbble.v1.text+json
