@@ -4,7 +4,7 @@
   * [架构(Schema)](#架构schema)
   * [参数(Parameters)](#参数parameters)
   * [客户端错误(Client Errors)](#客户端错误client-errors)
-  * [HTTP动作(HTTP Verbs)](http动作http-verbs)
+  * [HTTP动作(HTTP Verbs)](#http动作http-verbs)
   * [认证(Authentication)](#认证authentication)
   * [页码(Pagination)](#页码pagination)
       * [链路报头(Link Header)] (#链路报头link-header)
@@ -17,6 +17,15 @@
 * [媒体类型(Media Types)](#媒体类型media-types)
   * [评论正文属性(Comment Body Property)](#评论正文属性comment-body-property)
   * [快照描述属性(Shot Description Property)](#快照描述属性shot-description-property)
+  
+* [开放授权(OAuth)](#开放授权oauth)
+  * [Web应用流(Web Application Flow)](#web应用程序流web-application-flow)
+  * [客户端流(Client Flow)](#客户端流client-flow)
+  * [非Web应用流(Non-Web Application Flow)](#非web应用流non-web-application-flow)
+  * [重定向URL(Redirect URLs)](#重定向url-redirect-urls)
+  * [域(Scopes)](#域scopes)
+  * [认证请求常见错误(Common errors for the authorization request)](#认证请求常见错误common-errors-for-the-authorization-request)
+  * [访问令牌请求常见错误(Common errors for the access token request)](#访问令牌请求常见错误common-errors-for-the-access-token-request)
   
 ## 概述(Overview)
 
@@ -138,7 +147,7 @@ $ curl "https://api.dribbble.com/v1/user/followers?page=2&per_page=100"
 
 ```
 Link: <https://api.dribbble.com/v1/user/followers?page=1&per_page=100>; rel="prev",
-  <https://api.dribbble.com/v1/user/followers?page=3&per_page=100>; rel="next"
+      <https://api.dribbble.com/v1/user/followers?page=3&per_page=100>; rel="next"
 ```
 `rel` 的值可能是：
 
@@ -166,9 +175,9 @@ The headers tell you everything you need to know about your current rate limit s
 
 Header Name	|Description
 ---|---
-X-RateLimit-Limit	|The maximum number of requests that the consumer is permitted to make per minute.
-X-RateLimit-Remaining	|The number of requests remaining in the current rate limit window.
-X-RateLimit-Reset	|The time at which the current rate limit window resets in UTC epoch seconds.
+X-RateLimit-Limit	|允许该客户每分钟发出请求的最大数目。
+X-RateLimit-Remaining	|当前限流窗口的剩余请求数量。
+X-RateLimit-Reset	|当前限流窗口的重置时间。从UTC纪元开始。(1970-01-01 00:00:00 UTC)
 
 如果你需要时间显示为不同的格式，任何现代编程语言可以都完成这项工作。例如，如果您在您的网页浏览器中打开控制台，就可以轻松将时间重置为一个JavaScript Date对象。
 
@@ -328,6 +337,7 @@ Link: <url1>; rel="next", <url2>; rel="foo"; bar="baz"
 * [媒体类型(Media Types)](#媒体类型media-types)
   * [评论正文属性(Comment Body Property)](#评论正文属性comment-body-property)
   * [Shot描述属性(Shot Description Property)](#Shot描述属性shot-description-property)
+* [开放授权(OAuth)](#开放授权oauth)
 
 自定义媒体类型用来让消费者在API中选择他们希望收到的数据格式。当你发起请求，这是根据向`Accept`报头添加下列任一类型来完成的。资源对媒体类型处理得很特别，能够独立地改变和支持他们的格式，对其他的资源则不这样。
 
@@ -378,4 +388,202 @@ application/vnd.dribbble.v1.html+json
 ```
 application/vnd.dribbble.v1.text+json
 ```
+
+----------
+
+## 开放授权(OAuth)
+
+* [概述(Overview)](#概述overview)
+* [媒体类型(Media Types)](#媒体类型media-types)
+* [开放授权(OAuth)](#开放授权oauth)
+  * [Web应用流(Web Application Flow)](#web应用程序流web-application-flow)
+    * [1. 重定向用户请求访问Dribbble](#1.-重定向用户请求访问dribbble)
+    * [2. Dribbble重定向回你的站点](#2.-dribbble重定向回你的站点)
+    * [3. 用访问令牌来访问API](#3.-用访问令牌来访问api)
+  * [客户端流(Client Flow)](#客户端流client-flow)
+  * [非Web应用流(Non-Web Application Flow)](#非web应用流non-web-application-flow)
+  * [重定向URL(Redirect URLs)](#重定向url-redirect-urls)
+  * [域(Scopes)](#域scopes)
+  * [认证请求常见错误(Common errors for the authorization request)](#认证请求常见错误common-errors-for-the-authorization-request)
+  * [访问令牌请求常见错误(Common errors for the access token request)](#访问令牌请求常见错误common-errors-for-the-access-token-request)
+
+OAuth2是一种协议，允许外部应用请求授权获得用户在Dribbble帐户内除密码外的私人信息。这比基本认证更优秀，因为令牌可以被限制为特定类型的数据，并且用户可以随时撤销它。
+
+所有开发者需要在开始之前[注册他们的应用](https://dribbble.com/account/applications/new)。已注册的OAuth的应用分配一个唯一的客户端ID(clientID)和客户端密钥(client secret)。不要向别人分享你的客户端密钥(client secret)。
+
+###Web应用流(Web Application Flow)
+
+#####1. 重定向用户请求访问Dribbble
+
+```
+GET https://dribbble.com/oauth/authorize
+```
+
+**参数**
+
+Name	|Type	|Description
+----|----|----
+client_id	|string	|**必须**。 你**[注册](https://dribbble.com/account/applications/new)**时即可获得一个客户端ID。
+redirect_uri	|string	|用户授权之后会转到这个URL。 详情请见： **[重定向URL](http://developer.dribbble.com/v1/oauth/#redirect-urls)**。<br/>//TODO: 跳转页面标签
+scope	|string	|空格分隔的**[域](http://developer.dribbble.com/v1/oauth/#scopes)**列表。如果没有提供，域默认为向那些不具有有效应用令牌的用户提供公开域。对于已经拥有该应用有效令牌的用户，用户将不会显示带有域列表的授权页面。取而代之的是，流(flow)这步骤将自动和该被用户在用户最后一次完成的流(flow)的同一个的域内完成。<br/>//TODO: 跳转页面标签
+state	|string	|一个难以猜测的随机字符串。用于防止***跨站请求伪造***攻击。
+
+#####2. Dribbble重定向回你的网站
+
+Dribbble重定向回您的网站在`code`参数临时代码，以及你在上一步中`state`参数中提供的状态。如果状态不匹配，则已经由第三方和进程创建的请求应该被中止。
+
+Exchange这个来获取访问令牌：
+
+```
+POST https://dribbble.com/oauth/token
+```
+
+**参数**
+
+Name	|Type	|Description
+----|----|----
+client_id	|string	|**必须**。 你**[注册](https://dribbble.com/account/applications/new)**时即可获得一个客户端ID。
+client_secret	|string	|**必须**。 你**[注册](https://dribbble.com/account/applications/new)**时即可获得一个客户端密钥。
+code	|string	|**必须**。 你在**[第1步](#1.-重定向用户请求访问dribbble)**的响应里会获得code。
+redirect_uri	|string	|用户授权之后会转到这个URL。 详情请见： **[重定向URL](#重定向url-redirect-urls)**。
+
+**响应**
+
+响应将返回为以下格式的JSON：
+
+```
+{
+  "access_token" : "29ed478ab86c07f1c069b1af76088f7431396b7c4a2523d06911345da82224a0",
+  "token_type" : "bearer",
+  "scope" : "public write"
+}
+```
+
+#####3. 用访问令牌来访问API
+
+访问令牌允许您代表用户请求API。
+
+```
+GET https://api.dribbble.com/v1/user?access_token=...
+```
+
+你可以传递如上所示的令牌中的查询参数，但更干净的做法是将其包含在Authorization标头中：
+
+```
+Authorization: Bearer ACCESS_TOKEN
+```
+
+举个栗子，在`curl`中你可以像这样设置Authorization标头：
+
+```
+curl -H "Authorization: Bearer ACCESS_TOKEN" https://api.dribbble.com/v1/user
+```
+
+###客户端流(Client Flow)
+
+应用提供了可用于对一个服务器实现或公共JavaScript客户端的只读访问令牌。请注意，访问令牌依然受制于**[限流](#限流rate-limiting)**。
+
+和**[使用Web访问令牌](#3.-用访问令牌来访问api)**一样使用本访问令牌。
+
+###非Web应用流(Non-Web Application Flow)
+
+我们目前不支持OAuth的以外的任何其他身份验证方法。如果你只需要只读访问的话，试试**[客户端流](#客户端流client-flow)**。
+
+###重定向URL(Redirect URLs)
+
+The `redirect_uri` parameter is optional. If left out, Dribbble will redirect users to the callback URL configured in the OAuth application settings. If provided, the redirect URL’s host and port must exactly match the callback URL. The redirect URL’s path must reference a subdirectory of the callback URL.
+
+```
+CALLBACK: http://example.com/path
+
+GOOD: http://example.com/path
+GOOD: http://example.com/path/subdir/other
+GOOD: myapplication://phone-callback
+BAD:  http://example.com/
+BAD:  http://example.com/bar
+BAD:  http://example.com:8080/path
+BAD:  http://oauth.example.com:8080/path
+BAD:  http://example.org
+BAD:  ssh://example.com
+```
+
+###域(Scopes)
+Scopes let you specify exactly what type of access you need. Scopes limit access for OAuth tokens. They do not grant any additional permission beyond that which the user already has.
+
+For the web flow, requested scopes will be displayed to the user on the authorize form.
+
+Name	Description
+public	Grants read-only access to public information.
+This is the default scope if no scope is provided.
+write	Grants write access to user resources, except comments and shots.
+comment	Grants full access to create, update, and delete comments.
+upload	Grants full access to create, update, and delete shots and attachments.
+Your application can request the scopes in the initial redirection. You can specify multiple scopes by separating them with a space:
+
+https://dribbble.com/oauth/authorize?
+  client_id=...&
+  scope=public+write
+
+###认证请求常见错误(Common errors for the authorization request)
+There are a few things that can go wrong in the process of obtaining an OAuth token for a user. In the initial authorization request phase, these are some errors you might see:
+
+Application Suspended
+
+If the OAuth application you set up has been suspended (due to reported abuse, spam, or a misuse of the API), Dribbble will redirect to the registered callback URL with the following parameters summarizing the error:
+
+http://your-application.com/callback?error=application_suspended
+  &error_description=Your+application+has+been+suspended.
+  &state=xyz
+Please contact support to solve issues with suspended applications.
+
+Redirect URI Mismatch
+
+If you provide a redirect_uri that doesn’t match what you’ve registered with your application, Dribbble will redirect to the registered callback URL with the following parameters summarizing the error:
+
+http://your-application.com/callback?error=invalid_redirect_uri
+  &error_description=The+redirect+uri+included+is+not+valid.
+  &state=xyz
+To correct this error, either provide a redirect_uri that matches what you registered or leave out this parameter to use the default one registered with your application.
+
+Access Denied
+
+If the user rejects access to your application, Dribbble will redirect to the registered callback URL with the following parameters summarizing the error:
+
+http://your-application.com/callback?error=access_denied
+  &error_description=The+resource+owner+or+authorization+server+denied+the+request.
+  &state=xyz
+There’s nothing you can do here as users are free to choose not to use your application. More often than not, users will just close the window or press back in their browser, so it is likely that you’ll never see this error.
+
+###访问令牌请求常见错误(Common errors for the access token request)
+In the second phase of exchanging a code for an access token, there are an additional set of errors that can occur.
+
+Incorrect Client Credentials
+
+If the client_id and or client_secret you pass are incorrect you will receive this error response.
+
+{
+  "error" : "invalid_client",
+  "error_description" : "Client authentication failed due to unknown client, no client authentication included, or unsupported authentication method."
+}
+To solve this error, go back and make sure you have the correct credentials for your OAuth application. Double check the client_id and client_secret to make sure they are correct and being passed correctly to Dribbble.
+
+Redirect URI Mismatch
+
+If you provide a redirect_uri that doesn’t match what you’ve registered with your application, you will receive this error message:
+
+{
+  "error" : "invalid_grant",
+  "error_description" : "The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client."
+}
+To correct this error, either provide a redirect_uri that matches what you registered or leave out this parameter to use the default one registered with your application.
+
+Bad Verification Code
+
+If the verification code you pass is incorrect, expired, or doesn’t match what you received in the first request for authorization you will receive this error.
+
+{
+  "error" : "invalid_grant",
+  "error_description" : "The provided authorization grant is invalid, expired, revoked, does not match the redirection URI used in the authorization request, or was issued to another client."
+}
+To solve this error, start the OAuth process over from the beginning and get a new code.
 
