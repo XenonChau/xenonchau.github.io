@@ -397,9 +397,9 @@ application/vnd.dribbble.v1.text+json
 * [媒体类型(Media Types)](#媒体类型media-types)
 * [开放授权(OAuth)](#开放授权oauth)
   * [Web应用流(Web Application Flow)](#web应用程序流web-application-flow)
-    * [1. 重定向用户请求访问Dribbble](#1.-重定向用户请求访问dribbble)
-    * [2. Dribbble重定向回你的站点](#2.-dribbble重定向回你的站点)
-    * [3. 用访问令牌来访问API](#3.-用访问令牌来访问api)
+    * [1. 重定向用户请求访问Dribbble](#1-重定向用户请求访问dribbble)
+    * [2. Dribbble重定向回你的站点](#2-dribbble重定向回你的站点)
+    * [3. 用访问令牌来访问API](#3-用访问令牌来访问api)
   * [客户端流(Client Flow)](#客户端流client-flow)
   * [非Web应用流(Non-Web Application Flow)](#非web应用流non-web-application-flow)
   * [重定向URL(Redirect URLs)](#重定向url-redirect-urls)
@@ -444,7 +444,7 @@ Name	|Type	|Description
 ----|----|----
 client_id	|string	|**必须**。 你**[注册](https://dribbble.com/account/applications/new)**时即可获得一个客户端ID。
 client_secret	|string	|**必须**。 你**[注册](https://dribbble.com/account/applications/new)**时即可获得一个客户端密钥。
-code	|string	|**必须**。 你在**[第1步](#1.-重定向用户请求访问dribbble)**的响应里会获得code。
+code	|string	|**必须**。 你在**[第1步](#1-重定向用户请求访问dribbble)**的响应里会获得code。
 redirect_uri	|string	|用户授权之后会转到这个URL。 详情请见： **[重定向URL](#重定向url-redirect-urls)**。
 
 **响应**
@@ -483,7 +483,7 @@ curl -H "Authorization: Bearer ACCESS_TOKEN" https://api.dribbble.com/v1/user
 
 应用提供了可用于对一个服务器实现或公共JavaScript客户端的只读访问令牌。请注意，访问令牌依然受制于**[限流](#限流rate-limiting)**。
 
-和**[使用Web访问令牌](#3.-用访问令牌来访问api)**一样使用本访问令牌。
+和**[使用Web访问令牌](#3-用访问令牌来访问api)**一样使用本访问令牌。
 
 ###非Web应用流(Non-Web Application Flow)
 
