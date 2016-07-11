@@ -7,9 +7,7 @@
   * [HTTP动作(HTTP Verbs)](#http动作http-verbs)
   * [认证(Authentication)](#认证authentication)
   * [页码(Pagination)](#页码pagination)
-      * [链路报头(Link Header)] (#链路报头link-header)
   * [限流(Rate Limiting)](#限流rate-limiting)
-      * [保持限流(Staying within the rate limit)] (#保持限流staying-within-the-rate-limit)
   * [条件请求(Conditional requests)](#条件请求conditional-requests)
   * [跨源资源共享(Cross Origin Resource Sharing)](#跨源资源共享cross-origin-resource-sharing)
   * [JSON-P回调(JSON-P Callbacks)](#json-p回调json-p-callbacks)
@@ -28,6 +26,23 @@
   * [访问令牌请求常见错误(Common errors for the access token request)](#访问令牌请求常见错误common-errors-for-the-access-token-request)
   
 ## 概述(Overview)
+
+* [概述(Overview)](#概述overview)
+  * [架构(Schema)](#架构schema)
+  * [参数(Parameters)](#参数parameters)
+  * [客户端错误(Client Errors)](#客户端错误client-errors)
+  * [HTTP动作(HTTP Verbs)](#http动作http-verbs)
+  * [认证(Authentication)](#认证authentication)
+  * [页码(Pagination)](#页码pagination)
+      * [链路报头(Link Header)] (#链路报头link-header)
+  * [限流(Rate Limiting)](#限流rate-limiting)
+      * [保持限流(Staying within the rate limit)] (#保持限流staying-within-the-rate-limit)
+  * [条件请求(Conditional requests)](#条件请求conditional-requests)
+  * [跨源资源共享(Cross Origin Resource Sharing)](#跨源资源共享cross-origin-resource-sharing)
+  * [JSON-P回调(JSON-P Callbacks)](#json-p回调json-p-callbacks)
+* [媒体类型(Media Types)](#媒体类型media-types)
+* [开放授权(OAuth)](#开放授权oauth)
+
 
 请注意你必须[注册你的应用](https://dribbble.com/account/applications/new)并且在请求时使用OAuth认证或使用你的API客户端的access token进行认证。在此之前，请务必仔细阅读我们的[条款及指引](http://developer.dribbble.com/terms/)学习如何使用API。
 
@@ -406,11 +421,11 @@ application/vnd.dribbble.v1.text+json
   * [域(Scopes)](#域scopes)
   * [认证请求常见错误(Common errors for the authorization request)](#认证请求常见错误common-errors-for-the-authorization-request)
     * [应用挂起(Application Suspended)](#应用挂起application-suspended)
-    * [重定向URI不匹配(Redirect URI Mismatch)](#重定向uri不匹配redirect-uri-mismatch)
+    * [重定向URI不匹配(Redirect URI Mismatch)](#重定向uri不匹配redirect-uri-mismatch-1)
     * [拒绝访问(Access Denied)](#拒绝访问access-denied)
   * [访问令牌请求常见错误(Common errors for the access token request)](#访问令牌请求常见错误common-errors-for-the-access-token-request)
     * [不正确的客户端凭证(Incorrect Client Credentials)](#不正确的客户端凭证-incorrect-client-credentials)
-    * [重定向URI不匹配(Redirect URI Mismatch)](#重定向uri不匹配redirect-uri-mismatch)
+    * [重定向URI不匹配(Redirect URI Mismatch)](#重定向uri不匹配redirect-uri-mismatch-2)
     * [错误的验证码(Bad Verification Code)](#错误的验证码bad-verification-code)
 
 OAuth2是一种协议，允许外部应用请求授权获得用户在Dribbble帐户内除密码外的私人信息。这比基本认证更优秀，因为令牌可以被限制为特定类型的数据，并且用户可以随时撤销它。
@@ -549,7 +564,7 @@ http://your-application.com/callback?error=application_suspended
 
 请**[联系技术支持](https://dribbble.com/contact?api)**来解决被挂起的应用的问题。
 
-#####重定向URI不匹配(Redirect URI Mismatch)
+#####重定向URI不匹配(Redirect URI Mismatch)1
 
 如果你提供了一个和你的应用注册不匹配的`redirect_uri`，Dribbble将重定向到使用以下包含参数错误总结的已注册过的回调URL：
 
@@ -590,7 +605,7 @@ http://your-application.com/callback?error=access_denied
 
 为了解决这个错误，回溯并确保你有你的OAuth应用正确的凭证。仔细检查`client_id`和`client_secret`以确保它们是正确的，并且被正确的传递到Dribbble。
 
-#####重定向URI不匹配(Redirect URI Mismatch)
+#####重定向URI不匹配(Redirect URI Mismatch)2
 
 如果你提供了一个和你的应用注册不匹配的`redirect_uri`，Dribbble将重定向到使用以下包含参数错误总结的已注册过的回调URL：
 
