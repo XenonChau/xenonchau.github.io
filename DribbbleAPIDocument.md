@@ -421,11 +421,11 @@ application/vnd.dribbble.v1.text+json
   * [域(Scopes)](#域scopes)
   * [认证请求常见错误(Common errors for the authorization request)](#认证请求常见错误common-errors-for-the-authorization-request)
     * [应用挂起(Application Suspended)](#应用挂起application-suspended)
-    * [重定向URI不匹配(Redirect URI Mismatch)](#重定向uri不匹配redirect-uri-mismatch-1)
+    * [重定向URI不匹配(Redirect URI Mismatch)](#重定向uri不匹配redirect-uri-mismatch1)
     * [拒绝访问(Access Denied)](#拒绝访问access-denied)
   * [访问令牌请求常见错误(Common errors for the access token request)](#访问令牌请求常见错误common-errors-for-the-access-token-request)
     * [不正确的客户端凭证(Incorrect Client Credentials)](#不正确的客户端凭证-incorrect-client-credentials)
-    * [重定向URI不匹配(Redirect URI Mismatch)](#重定向uri不匹配redirect-uri-mismatch-2)
+    * [重定向URI不匹配(Redirect URI Mismatch)](#重定向uri不匹配redirect-uri-mismatch2)
     * [错误的验证码(Bad Verification Code)](#错误的验证码bad-verification-code)
 
 OAuth2是一种协议，允许外部应用请求授权获得用户在Dribbble帐户内除密码外的私人信息。这比基本认证更优秀，因为令牌可以被限制为特定类型的数据，并且用户可以随时撤销它。
