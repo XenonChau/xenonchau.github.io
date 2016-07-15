@@ -25,6 +25,8 @@
   * [认证请求常见错误(Common errors for the authorization request)](#认证请求常见错误common-errors-for-the-authorization-request)
   * [访问令牌请求常见错误(Common errors for the access token request)](#访问令牌请求常见错误common-errors-for-the-access-token-request)
   
+* [第二章：图集与工程](https://github.com/XenonChau/xenonchau.github.io/blob/master/DribbbleAPIDocument2.md)
+  
 ## 概述(Overview)
 
 * [概述(Overview)](#概述overview)
@@ -631,3 +633,8 @@ http://your-application.com/callback?error=access_denied
 
 为了解决这个错误，重新开始OAuth流程来得到一个新的代码。
 
+----------
+
+> * [继续阅读：图集与工程(Shots & Projects)](https://github.com/XenonChau/xenonchau.github.io/blob/master/DribbbleAPIDocument2.md)
+
+----------
