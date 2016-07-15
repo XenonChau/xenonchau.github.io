@@ -1,4 +1,6 @@
 # Dribbble API 文档
+
+* [查看上一章：概述](https://github.com/XenonChau/xenonchau.github.io/blob/master/DribbbleAPIDocument.md)
 * [图集(Buckets)](#图集buckets)
 * [快照(Shots)](#快照shots)
 
@@ -6,6 +8,7 @@
 
 > 扩展阅读: [Buckets are collections of shots](https://dribbble.com/buckets)
 
+* [概述(Overview)](https://github.com/XenonChau/xenonchau.github.io/blob/master/DribbbleAPIDocument.md)
 * [图集(Buckets)](#图集buckets)
   * [获取图集(Get a bucket)](#获取一个图集get-a-bucket)
   * [创建图集((Create a bucket))](#创建一个图集create-a-bucket)
@@ -523,3 +526,8 @@ X-RateLimit-Remaining: 59
   }
 ]
 ```
+
+----------
+>  继续阅读: [快照(Shots)](https://github.com/XenonChau/xenonchau.github.io/blob/master/DribbbleAPIDocument3.md)
+
+----------
