@@ -3,8 +3,8 @@
 ## 快照
 
 * [列出全部快照(List shots)](#列出全部快照list-shots)
-* [获取快照(Get a shot)](#获取快照-et-a-shot)
-* [创建快照(Create a shot)](#创建快照-create-a-shot)
+* [获取快照(Get a shot)](#获取快照get-a-shot)
+* [创建快照(Create a shot)](#创建快照create-a-shot)
 * [更新快照(Update a shot)](#更新快照update-a-shot)
 * [删除快照(Delete a shot)](#删除快照delete-a-shot)
 
