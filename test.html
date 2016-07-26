@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <!-- 基本库 -->
+        <script src="https://cdn.bootcss.com/react/15.2.1/react.js"></script>
+        <!-- 模拟DOM的库 -->
+        <script src="https://cdn.bootcss.com/react/15.2.1/react-dom.min.js"></script>
+        <!-- 哦，不懂：JSX 语法转为 JavaScript 语法，这一步很消耗时间，实际上线的时候，应该将它放到服务器完成。 -->
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <div id="goodsList"><!--想要插入代码的地方--></div>
+
+        <!--babel是RN必须要用的东西-->
+        <script type="text/babel">
+        // 创建一个列表类，用于接收服务器返回的数据。
+        // 需要有请求回来的三种状态：加载中、成功、失败。
+        // 失败的两种情况：请求到错误的数据 or 服务器没响应。
+
+        var GoodsList = React.createClass({
+          getInitialState: function() {
+            return {
+              // 页面初始化的时候进行的状态。
+              loading: true,
+              error: null,
+              data: null
+            };
+          },
+
+          componentDidMount() {
+            // 页面加载成功之后，发送请求，then为回调结果。
+            this.props.promise.then(
+            value => this.setState({loading: false, data: value}),
+            error => this.setState({loading: false, error: error}));
+          },
+
+          render: function() {
+            if (this.state.loading) {
+              return <span>页面加载中...</span>;
+            }
+            else if (this.state.error !== null) {
+              return <span>Error: {this.state.error.message}</span>;
+            }
+            else {
+
+              return (
+                <main>
+                  <h1>asdff.xyz 装了多少b ？</h1>
+                  <span>如果返回一段HTML代码，直接渲染！{this.state.data.b}</span>
+                </main>
+
+
+
+              );
+            }
+          }
+        });
+
+
+          ReactDOM.render(
+              // 发送请求
+              <GoodsList promise={$.getJSON('http://asdff.xyz/a.php')} />,
+              document.getElementById('goodsList')
+          );
+        </script>
+
+    </body>
+</html>
