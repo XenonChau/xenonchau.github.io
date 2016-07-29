@@ -270,7 +270,7 @@ X-RateLimit-Remaining: 59
 POST /shots
 ```
 
-创建快照需要用户有`upload`域授权。被授权的用户也必须是一个玩家(player)或团队(teams)。
+创建快照需要用户有`upload`权限组授权。被授权的用户也必须是一个玩家(player)或团队(teams)。
 
 **参数**
 
@@ -411,5 +411,4 @@ X-RateLimit-Remaining: 59
 DELETE /shots/:id
 ```
 
-删除快照需要用户拥有`upload`域授权。被授权用户同时必须是该快照的拥有者。
-Deleting a shot requires the user to be authenticated with the upload scope. The authenticated user must also own the shot.
+删除快照需要用户拥有`upload`权限组授权。被授权用户同时必须是该快照的拥有者。

@@ -21,7 +21,7 @@
   * [客户端流(Client Flow)](#客户端流client-flow)
   * [非Web应用流(Non-Web Application Flow)](#非web应用流non-web-application-flow)
   * [重定向URL(Redirect URLs)](#重定向url-redirect-urls)
-  * [域(Scopes)](#域scopes)
+  * [权限组(Scopes)](#权限组scopes)
   * [认证请求常见错误(Common errors for the authorization request)](#认证请求常见错误common-errors-for-the-authorization-request)
   * [访问令牌请求常见错误(Common errors for the access token request)](#访问令牌请求常见错误common-errors-for-the-access-token-request)
   
@@ -282,7 +282,7 @@ Access-Control-Allow-Credentials: true
 
 扩展阅读: JSON-P<sup>[wikipedia](https://zh.wikipedia.org/zh-cn/JSONP)</sup>
 
-你可以发送一个回调参数给任何GET调用来获得包裹在一个JSON函数的结果。这通常是浏览器避过跨域问题想要在网页中嵌入内容时被使用的。响应包括和常规API相同的数据输出，外加HTTP头的相关信息。
+你可以发送一个回调参数给任何GET调用来获得包裹在一个JSON函数的结果。这通常是浏览器避过跨权限组问题想要在网页中嵌入内容时被使用的。响应包括和常规API相同的数据输出，外加HTTP头的相关信息。
 
 
 ```
@@ -420,7 +420,7 @@ application/vnd.dribbble.v1.text+json
   * [客户端流(Client Flow)](#客户端流client-flow)
   * [非Web应用流(Non-Web Application Flow)](#非web应用流non-web-application-flow)
   * [重定向URL(Redirect URLs)](#重定向url-redirect-urls)
-  * [域(Scopes)](#域scopes)
+  * [权限组(Scopes)](#权限组scopes)
   * [认证请求常见错误(Common errors for the authorization request)](#认证请求常见错误common-errors-for-the-authorization-request)
     * [应用挂起(Application Suspended)](#应用挂起application-suspended)
     * [重定向URI不匹配(Redirect URI Mismatch)](#重定向uri不匹配redirect-uri-mismatch1)
@@ -448,7 +448,7 @@ Name	|Type	|Description
 ----|----|----
 client_id	|string	|**必须**。 你**[注册](https://dribbble.com/account/applications/new)**时即可获得一个客户端ID。
 redirect_uri	|string	|用户授权之后会转到这个URL。 详情请见： **[重定向URL](#重定向url-redirect-urls)**。
-scope	|string	|使用空格进行分隔的**[域](#域scopes)**列表。如果没有提供，域默认为向那些不具有有效应用令牌的用户提供公开域。对于已经拥有该应用有效令牌的用户，用户将不会显示带有域列表的授权页面。取而代之的是，流(flow)这步骤将自动和该被用户在用户最后一次完成的流(flow)的同一个的域内完成。
+scope	|string	|使用空格进行分隔的**[权限组](#权限组scopes)**列表。如果没有提供，权限组默认为向那些不具有有效应用令牌的用户提供公开权限组。对于已经拥有该应用有效令牌的用户，用户将不会显示带有权限组列表的授权页面。取而代之的是，流(flow)这步骤将自动和该被用户在用户最后一次完成的流(flow)的同一个的权限组内完成。
 state	|string	|一个难以猜测的随机字符串。用于防止***跨站请求伪造***攻击。
 
 #####2. Dribbble重定向回你的网站
@@ -530,19 +530,19 @@ BAD:  http://example.org
 BAD:  ssh://example.com
 ```
 
-###域(Scopes)
-作用域让你指定正是你需要什么类型的访问。范围限制的OAuth令牌访问。他们不授予超出其用户已经有任何额外的许可。
+###权限组(Scopes)
+权限组让你指定正是你需要什么类型的访问。范围限制的OAuth令牌访问。他们不授予超出其用户已经有任何额外的许可。
 
-对于Web流，请求作用域将被显示到用户的授权表单上。
+对于Web流，请求权限组将被显示到用户的授权表单上。
 
 Name	|Description
    -----|------
-public	|授予只读公共信息访问。<br/>`如果没提供域，这就是默认域。`
+public	|授予只读公共信息访问。<br/>`如果没提供权限组，这就是默认权限组。`
 write	|授予用户资源的写权限，除评论(comment)和快照(shot)。
 comment	|授予创建，更新和删除评论的完全访问权限。
 upload	|授予创建，更新和删除照片和附件的完全访问权限。
 
-您的应用可以在初始重定向中请求域(scopes)。您可以用空格分隔它们来指定多个域：
+您的应用可以在初始重定向中请求权限组。您可以用空格分隔它们来指定多个权限组：
 
 ```
 https://dribbble.com/oauth/authorize?
@@ -564,7 +564,7 @@ http://your-application.com/callback?error=application_suspended
   &state=xyz
 ```
 
-请**[联系技术支持](https://dribbble.com/contact?api)**来解决被挂起的应用的问题。
+请 **[联系技术支持](https://dribbble.com/contact?api)** 来解决被挂起的应用的问题。
 
 #####重定向URI不匹配(Redirect URI Mismatch)1
 
@@ -594,7 +594,7 @@ http://your-application.com/callback?error=access_denied
 
 在一个交换访问令牌代码的第二阶段，还有另外一组可能出现的错误。
 
-#####不正确的客户端凭证(Incorrect Client Credentials)
+#####错误的客户端凭证(Incorrect Client Credentials)
 
 如果`client_id`和/或`client_secret`传递不正确，您将收到此错误响应。
 
